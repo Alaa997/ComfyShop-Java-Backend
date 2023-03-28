@@ -1,9 +1,10 @@
-package nl.fontys.s3.comfyshop.bussiness.Product.impl;
+package nl.fontys.s3.comfyshop.bussiness.product.impl;
 
 import lombok.AllArgsConstructor;
-import nl.fontys.s3.comfyshop.bussiness.Product.UpdateProductUC;
+import nl.fontys.s3.comfyshop.DTO.ProductDTO;
+import nl.fontys.s3.comfyshop.bussiness.exception.InvalidCategoryException;
 import nl.fontys.s3.comfyshop.bussiness.exception.InvalidProductException;
-import nl.fontys.s3.comfyshop.domain.Product.UpdateProductRequest;
+import nl.fontys.s3.comfyshop.bussiness.product.UpdateProductUC;
 import nl.fontys.s3.comfyshop.persistence.CategoryRepository;
 import nl.fontys.s3.comfyshop.persistence.ProductRepository;
 import nl.fontys.s3.comfyshop.persistence.entity.CategoryEntity;
@@ -18,19 +19,22 @@ public class UpdateProductUCImpl implements UpdateProductUC {
     private final ProductRepository productRepository;
     private final CategoryRepository categoryRepository;
     @Override
-    public void updateProduct(UpdateProductRequest request) {
+    public void updateProduct(ProductDTO request) {
         Optional<ProductEntity> productOptional = productRepository.findById(request.getId());
         if (productOptional.isEmpty()) {
             throw new InvalidProductException("PRODUCT_ID_INVALID");
         }
-
-        ProductEntity product = productOptional.get();
-        updateFields(request, product);
+        ProductEntity productEntity = productOptional.get();
+        updateFields(request, productEntity);
     }
-    private void updateFields(UpdateProductRequest request, ProductEntity product) {
-        CategoryEntity categoryEntity = categoryRepository.findById(request.getCategoryId());
-        product.setCategory(categoryEntity);
+    private void updateFields(ProductDTO request, ProductEntity product) {
+        Optional<CategoryEntity> categoryOptional = categoryRepository.findById(request.getCategory().getId());
+        if (categoryOptional.isEmpty()){
+            throw new InvalidCategoryException("CATEGORY_ID_INVALID");
+        }
+        product.setCategory(categoryOptional.get());
         product.setName(request.getName());
+        product.setDescription(request.getDescription());
         product.setUnit(request.getUnit());
         product.setPrice(request.getPrice());
 

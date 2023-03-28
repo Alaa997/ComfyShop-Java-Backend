@@ -1,7 +1,7 @@
-package nl.fontys.s3.comfyshop.bussiness.Product;
+package nl.fontys.s3.comfyshop.bussiness.product;
 
-import nl.fontys.s3.comfyshop.domain.Product.UpdateProductRequest;
+import nl.fontys.s3.comfyshop.DTO.ProductDTO;
 
 public interface UpdateProductUC {
-    void updateProduct(UpdateProductRequest request);
+    void updateProduct(ProductDTO request);
 }

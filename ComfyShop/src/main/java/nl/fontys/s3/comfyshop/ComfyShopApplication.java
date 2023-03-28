@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ComfyShopApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ComfyShopApplication.class, args);
+		 SpringApplication.run(ComfyShopApplication.class, args);
 	}
 
 }

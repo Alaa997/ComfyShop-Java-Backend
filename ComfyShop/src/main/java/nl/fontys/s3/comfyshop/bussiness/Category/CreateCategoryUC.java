@@ -1,10 +1,7 @@
-package nl.fontys.s3.comfyshop.bussiness.Category;
+package nl.fontys.s3.comfyshop.bussiness.category;
 
-import nl.fontys.s3.comfyshop.domain.Category.CreateCategoryRequest;
-import nl.fontys.s3.comfyshop.domain.Category.CreateCategoryResponse;
-import nl.fontys.s3.comfyshop.domain.Product.CreateProductRequest;
-import nl.fontys.s3.comfyshop.domain.Product.CreateProductResponse;
+import nl.fontys.s3.comfyshop.DTO.CategoryDTO;
 
 public interface CreateCategoryUC {
-    CreateCategoryResponse createCategory(CreateCategoryRequest request);
+    CategoryDTO createCategory(CategoryDTO request);
 }

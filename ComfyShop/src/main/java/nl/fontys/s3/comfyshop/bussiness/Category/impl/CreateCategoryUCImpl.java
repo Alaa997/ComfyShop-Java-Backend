@@ -1,10 +1,10 @@
-package nl.fontys.s3.comfyshop.bussiness.Category.impl;
+package nl.fontys.s3.comfyshop.bussiness.category.impl;
 
 import lombok.AllArgsConstructor;
-import nl.fontys.s3.comfyshop.bussiness.Category.CreateCategoryUC;
+import nl.fontys.s3.comfyshop.DTO.CategoryDTO;
+import nl.fontys.s3.comfyshop.bussiness.category.CreateCategoryUC;
 import nl.fontys.s3.comfyshop.bussiness.exception.NameAlreadyExistsException;
-import nl.fontys.s3.comfyshop.domain.Category.CreateCategoryRequest;
-import nl.fontys.s3.comfyshop.domain.Category.CreateCategoryResponse;
+import nl.fontys.s3.comfyshop.mappers.CategoryMapper;
 import nl.fontys.s3.comfyshop.persistence.CategoryRepository;
 import nl.fontys.s3.comfyshop.persistence.entity.CategoryEntity;
 import org.springframework.stereotype.Service;
@@ -15,20 +15,19 @@ public class CreateCategoryUCImpl implements CreateCategoryUC {
     private final CategoryRepository categoryRepository;
 
     @Override
-    public CreateCategoryResponse createCategory(CreateCategoryRequest request) {
-        if (categoryRepository.existsByName(request.getName())) {
+    public CategoryDTO createCategory(CategoryDTO categoryDTO) {
+        if (existsByName(categoryDTO.getName())) {
             throw new NameAlreadyExistsException();
         }
-        CategoryEntity savedCategory = saveNewCategory(request);
-        return CreateCategoryResponse.builder()
-                .categoryId(savedCategory.getId())
-                .name(savedCategory.getName())
-                .build();
+        CategoryEntity savedCategory = saveCategory(CategoryMapper.mapperToEntity(categoryDTO));
+        return CategoryMapper.mapperToDTO(savedCategory);
     }
-    private CategoryEntity saveNewCategory(CreateCategoryRequest request) {
-        CategoryEntity newCategory = CategoryEntity.builder()
-                .name(request.getName())
-                .build();
-        return categoryRepository.save(newCategory);
+
+    private CategoryEntity saveCategory(CategoryEntity category) {
+        return categoryRepository.save(category);
+    }
+
+    private boolean existsByName(String name) {
+        return categoryRepository.existsByName(name);
     }
 }

@@ -6,15 +6,13 @@ import nl.fontys.s3.comfyshop.persistence.CategoryRepository;
 import nl.fontys.s3.comfyshop.persistence.entity.CategoryEntity;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
+import org.mockito.*;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
+import static org.junit.Assert.*;
 
 @ExtendWith(MockitoExtension.class)
 class UpdateCategoryUCImplTest {
@@ -22,6 +20,7 @@ class UpdateCategoryUCImplTest {
     private CategoryRepository categoryRepositoryMock;
     @InjectMocks
     private UpdateCategoryUCImpl updateCategoryUC;
+
     @Test
     void updateCategory_Success() {
         // Arrange
@@ -41,7 +40,7 @@ class UpdateCategoryUCImplTest {
     }
 
     @Test
-    void updateCategory_shouldThrowException_whenInvalidCategoryId(){
+    void updateCategory_shouldThrowException_whenInvalidCategoryId() {
         // Arrange
         Long categoryId = 1L;
         CategoryDTO request = CategoryDTO.builder().id(categoryId).name("New Meat").build();

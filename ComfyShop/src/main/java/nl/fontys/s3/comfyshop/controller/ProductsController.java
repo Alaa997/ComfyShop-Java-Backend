@@ -11,27 +11,36 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/products")
 @AllArgsConstructor
 public class ProductsController {
     private final CreateProductUC createProductUC;
     private final UpdateProductUC updateProductUC;
-    private final GetProductsUC getProductsUC;
-    private final GetProductUC getProductUC;    private final DeleteProductUC deleteProductUC;
+    private final GetProductsByCategoryUC getProductsByCategoryUC;
+    private final GetProductUC getProductUC;
+    private final GetAllProductsUC getAllProductsUC;
+    private final DeleteProductUC deleteProductUC;
 
-    @GetMapping({"id"})
-    public final ResponseEntity<ProductDTO> getProduct(@PathVariable(value = "id") final long id){
+    @GetMapping("/product/{id}")
+    public final ResponseEntity<ProductDTO> getProduct(@PathVariable(value = "id") final long id) {
         final Optional<ProductDTO> productOptional = getProductUC.getProduct(id);
-        if (productOptional.isEmpty()){
+        if (productOptional.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok().body(productOptional.get());
     }
-    @GetMapping
-    public ResponseEntity<List<ProductDTO>> getProducts(@RequestParam(value = "category", required = false) Long categoryId) {
-        List<ProductDTO> response = getProductsUC.getProducts(categoryId);
-        return ResponseEntity.ok(response);
+
+    @GetMapping("")
+    public ResponseEntity<List<ProductDTO>> getProducts(@RequestParam(value = "categoryId", required = false) Long categoryId) {
+        List<ProductDTO> products;
+        if (categoryId != null) {
+            products = getProductsByCategoryUC.getProductsByCategoryId(categoryId);
+        } else {
+            products = getAllProductsUC.getAllProducts();
+        }
+        return ResponseEntity.ok(products);
     }
 
     @PostMapping()
@@ -46,8 +55,9 @@ public class ProductsController {
         updateProductUC.updateProduct(request);
         return ResponseEntity.noContent().build();
     }
+
     @DeleteMapping("{productId}")
-    public ResponseEntity<Void> deleteProduct(@PathVariable long productId){
+    public ResponseEntity<Void> deleteProduct(@PathVariable long productId) {
         deleteProductUC.deleteProduct(productId);
         return ResponseEntity.noContent().build();
     }

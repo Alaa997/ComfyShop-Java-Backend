@@ -4,6 +4,6 @@ import nl.fontys.s3.comfyshop.DTO.ProductDTO;
 
 import java.util.List;
 
-public interface GetProductsUC {
-    List<ProductDTO> getProducts(long categoryId);
+public interface GetProductsByCategoryUC {
+    List<ProductDTO> getProductsByCategoryId(long categoryId);
 }

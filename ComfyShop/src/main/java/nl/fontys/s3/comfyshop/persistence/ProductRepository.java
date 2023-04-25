@@ -9,5 +9,5 @@ import java.util.List;
 public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
     boolean existsByName(String name);
     List<ProductEntity> findAllByCategoryId(Long id);
-  int countByCategoryId(Long categoryId);
+    int countByCategoryId(Long categoryId);
 }

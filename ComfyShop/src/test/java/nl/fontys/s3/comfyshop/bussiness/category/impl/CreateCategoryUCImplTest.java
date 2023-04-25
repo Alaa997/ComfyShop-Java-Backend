@@ -8,10 +8,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class CreateCategoryUCImplTest {
@@ -26,14 +26,15 @@ class CreateCategoryUCImplTest {
         CategoryDTO categoryDTO = CategoryDTO.builder().name("Meat").build();
         when(categoryRepositoryMock.existsByName(categoryDTO.getName())).thenReturn(false);
 
-        CategoryEntity savedCategoryEntity = CategoryEntity.builder().name(categoryDTO.getName()).build();
-        when(categoryRepositoryMock.save(Mockito.any(CategoryEntity.class))).thenReturn(savedCategoryEntity);
+        CategoryEntity savedCategoryEntity = CategoryEntity.builder().id(1L).name(categoryDTO.getName()).build();
+        CategoryEntity expectedNewCategory = CategoryEntity.builder().name("Meat").build();
+        when(categoryRepositoryMock.save(expectedNewCategory)).thenReturn(savedCategoryEntity);
         // Act
         CategoryDTO createdCategoryDTO = createCategoryUC.createCategory(categoryDTO);
 
         // Assert
-        assertNotNull(createdCategoryDTO);
-        assertEquals(categoryDTO.getName(), createdCategoryDTO.getName());
+        CategoryDTO expected = CategoryDTO.builder().id(1L).name("Meat").build();
+        assertEquals(expected, createdCategoryDTO);
     }
 
     @Test

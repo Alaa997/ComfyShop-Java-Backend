@@ -3,7 +3,7 @@ package nl.fontys.s3.comfyshop.bussiness.product.impl;
 import lombok.AllArgsConstructor;
 import nl.fontys.s3.comfyshop.DTO.ProductDTO;
 import nl.fontys.s3.comfyshop.bussiness.exception.InvalidCategoryException;
-import nl.fontys.s3.comfyshop.bussiness.product.GetProductsUC;
+import nl.fontys.s3.comfyshop.bussiness.product.GetProductsByCategoryUC;
 import nl.fontys.s3.comfyshop.mappers.ProductMapper;
 import nl.fontys.s3.comfyshop.persistence.CategoryRepository;
 import nl.fontys.s3.comfyshop.persistence.ProductRepository;
@@ -17,11 +17,11 @@ import java.util.Optional;
 
 @Service
 @AllArgsConstructor
-public class GetProductsUCImpl implements GetProductsUC {
+public class GetProductsByCategoryUCImpl implements GetProductsByCategoryUC {
     private final ProductRepository productRepository;
     private final CategoryRepository categoryRepository;
     @Override
-    public List<ProductDTO> getProducts(long categoryId) {
+    public List<ProductDTO> getProductsByCategoryId(long categoryId) {
         Optional<CategoryEntity> categoryOptional = categoryRepository.findById(categoryId);
         if (categoryOptional.isEmpty()) {
             throw new InvalidCategoryException("CATEGORY_ID_INVALID");

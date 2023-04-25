@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-class GetProductsUCImplTest {
+class GetProductsByCategoryUCImplTest {
     @Mock
     private ProductRepository productRepositoryMock;
     @Mock
@@ -30,7 +30,7 @@ class GetProductsUCImplTest {
     @Mock
     private ProductMapper productMapperMock;
     @InjectMocks
-    private GetProductsUCImpl getProductsUC;
+    private GetProductsByCategoryUCImpl getProductsByCategoryUC;
     @Test
     void getProducts_success() {
         // Arrange
@@ -63,7 +63,7 @@ class GetProductsUCImplTest {
         List<ProductDTO> expected = productMapperMock.mapperToDTOList(productEntityList);
 
         // Act
-        List<ProductDTO> actual = getProductsUC.getProducts(categoryId);
+        List<ProductDTO> actual = getProductsByCategoryUC.getProductsByCategoryId(categoryId);
 
         // Assert
         assertEquals(expected.size(), actual.size());
@@ -77,7 +77,7 @@ class GetProductsUCImplTest {
         when(categoryRepositoryMock.findById(categoryId)).thenReturn(Optional.empty());
 
         // Act and Assert
-        assertThrows(InvalidCategoryException.class, () -> getProductsUC.getProducts(categoryId));
+        assertThrows(InvalidCategoryException.class, () -> getProductsByCategoryUC.getProductsByCategoryId(categoryId));
         verify(productRepositoryMock, never()).findAllByCategoryId(categoryId);
         verify(productRepositoryMock, never()).countByCategoryId(categoryId);
     }
@@ -91,7 +91,7 @@ class GetProductsUCImplTest {
         when(productRepositoryMock.countByCategoryId(categoryId)).thenReturn(0);
 
         // Act
-        List<ProductDTO> actual = getProductsUC.getProducts(categoryId);
+        List<ProductDTO> actual = getProductsByCategoryUC.getProductsByCategoryId(categoryId);
 
         // Assert
         assertEquals(0, actual.size());

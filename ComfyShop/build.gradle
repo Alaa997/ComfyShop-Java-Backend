@@ -1,9 +1,37 @@
 plugins {
     id 'java'
-    id 'org.sonarqube' version '3.0'
+    id'jacoco'
+    id "org.sonarqube" version "4.0.0.2929"
     id 'org.springframework.boot' version '2.6.+'
     id 'io.spring.dependency-management' version '1.1.0'
     id 'org.graalvm.buildtools.native' version '0.9.18'
+}
+
+sonar {
+
+    properties {
+        property "sonar.projectKey", "StudyMate"
+        property "sonar.qualitygate.wait", true
+        property "sonar.coverage.exclusions", "**/lombok/**/*.*"
+
+    }
+
+}
+tasks.named('sonar').configure {
+    dependsOn jacocoTestReport;
+}
+test {
+    jacoco {
+        enabled = true
+    }
+}
+tasks.named('jacocoTestReport') {
+    reports {
+        xml.required = true
+        html.destination = file("$buildDir/customJacocoReportDir")
+        csv.enabled true
+    }
+    dependsOn(test)
 }
 
 group = 'pets.example'
@@ -44,6 +72,16 @@ dependencies {
 
 }
 
-tasks.named('test') {
+//tasks.named('test') {
+//    useJUnitPlatform()
+//}
+test {
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
     useJUnitPlatform()
+}
+
+compileJava {
+    options.compilerArgs += '-Xlint:deprecation'
 }

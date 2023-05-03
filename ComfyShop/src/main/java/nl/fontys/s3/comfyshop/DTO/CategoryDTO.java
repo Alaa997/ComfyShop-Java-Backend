@@ -1,4 +1,4 @@
-package nl.fontys.s3.comfyshop.domain.Category;
+package nl.fontys.s3.comfyshop.DTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Category {
-    private Long id;
-    private String name;
+public class CategoryDTO {
+    public Long id;
+    public String name;
 }

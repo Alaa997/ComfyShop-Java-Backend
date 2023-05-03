@@ -1,9 +1,8 @@
-package nl.fontys.s3.comfyshop.bussiness.Product;
+package nl.fontys.s3.comfyshop.bussiness.product;
 
-import nl.fontys.s3.comfyshop.domain.Product.CreateProductRequest;
-import nl.fontys.s3.comfyshop.domain.Product.CreateProductResponse;
+import nl.fontys.s3.comfyshop.DTO.ProductDTO;
 
 
 public interface CreateProductUC {
-    CreateProductResponse createProduct(CreateProductRequest request);
+    ProductDTO createProduct(ProductDTO request);
 }

@@ -1,16 +1,10 @@
 package nl.fontys.s3.comfyshop.persistence;
 
 import nl.fontys.s3.comfyshop.persistence.entity.CategoryEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
-public interface CategoryRepository {
-    CategoryEntity save(CategoryEntity category);
-    CategoryEntity findById(long categoryId);
-    List<CategoryEntity> findAll();
-
+@Repository
+public interface CategoryRepository extends JpaRepository<CategoryEntity, Long> {
     boolean existsByName(String name);
-
-    boolean existsById(long categoryId);
-
 }

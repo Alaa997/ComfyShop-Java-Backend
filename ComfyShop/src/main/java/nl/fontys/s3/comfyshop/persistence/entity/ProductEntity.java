@@ -28,11 +28,9 @@ public class ProductEntity {
     @NotBlank
     @Column(name = "description")
     public String description;
-    @NotBlank
-    public String  unit;
     @NotNull
     public Double price;
-    @NotBlank
+//    @NotBlank
     @ManyToOne
     @JoinColumn(name = "category_id")
     public CategoryEntity category;

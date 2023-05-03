@@ -35,7 +35,6 @@ public class UpdateProductUCImpl implements UpdateProductUC {
         product.setCategory(categoryOptional.get());
         product.setName(request.getName());
         product.setDescription(request.getDescription());
-        product.setUnit(request.getUnit());
         product.setPrice(request.getPrice());
 
         productRepository.save(product);

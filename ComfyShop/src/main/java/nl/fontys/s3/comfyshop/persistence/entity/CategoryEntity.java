@@ -7,7 +7,8 @@ import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
+import java.util.List;
+//import javax.validation.constraints.NotBlank;
 
 @Entity
 @Builder
@@ -20,8 +21,10 @@ public class CategoryEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     public Long id;
-    @NotBlank
+//    @NotBlank
     @Length(min = 3 ,max = 20)
     @Column(name = "name")
     public String name;
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+    public List<ProductEntity> products;
 }

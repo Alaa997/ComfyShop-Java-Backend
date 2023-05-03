@@ -1,4 +1,4 @@
-package nl.fontys.s3.comfyshop.DTO;
+package nl.fontys.s3.comfyshop.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

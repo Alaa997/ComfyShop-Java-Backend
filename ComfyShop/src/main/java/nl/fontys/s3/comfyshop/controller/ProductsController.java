@@ -1,7 +1,7 @@
 package nl.fontys.s3.comfyshop.controller;
 
 import lombok.AllArgsConstructor;
-import nl.fontys.s3.comfyshop.DTO.ProductDTO;
+import nl.fontys.s3.comfyshop.dto.ProductDTO;
 import nl.fontys.s3.comfyshop.bussiness.product.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

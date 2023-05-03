@@ -1,6 +1,6 @@
 package nl.fontys.s3.comfyshop.mappers;
 
-import nl.fontys.s3.comfyshop.DTO.CategoryDTO;
+import nl.fontys.s3.comfyshop.dto.CategoryDTO;
 import nl.fontys.s3.comfyshop.persistence.entity.CategoryEntity;
 import org.modelmapper.ModelMapper;
 

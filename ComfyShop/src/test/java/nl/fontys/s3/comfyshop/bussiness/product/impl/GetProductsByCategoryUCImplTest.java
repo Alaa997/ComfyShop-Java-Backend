@@ -1,6 +1,6 @@
 package nl.fontys.s3.comfyshop.bussiness.product.impl;
 
-import nl.fontys.s3.comfyshop.DTO.ProductDTO;
+import nl.fontys.s3.comfyshop.dto.ProductDTO;
 import nl.fontys.s3.comfyshop.bussiness.exception.InvalidCategoryException;
 import nl.fontys.s3.comfyshop.mappers.ProductMapper;
 import nl.fontys.s3.comfyshop.persistence.CategoryRepository;

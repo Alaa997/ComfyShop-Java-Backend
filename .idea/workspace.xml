@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f2e715d9-730d-4915-8846-c41c79ebbe63" name="Changes" comment="filter by category" />
+    <list default="true" id="f2e715d9-730d-4915-8846-c41c79ebbe63" name="Changes" comment="filter by category">
+      <change afterPath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/DTO/UserDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/bussiness/exception/EmailAlreadyExistsException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/bussiness/user/CreateUserUC.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/bussiness/user/impl/CreateUserUCImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/mappers/UserMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/persistence/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/bussiness/user/impl/AppUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/bussiness/user/AppUserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/persistence/entity/AppUserRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/persistence/entity/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/persistence/entity/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/persistence/entity/UserEntity.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -148,6 +160,7 @@
       <updated>1680466546147</updated>
       <workItem from="1680466547642" duration="21000" />
       <workItem from="1683109928056" duration="287000" />
+      <workItem from="1683622492859" duration="13000" />
     </task>
     <task id="LOCAL-00001" summary="filter by category">
       <created>1683110073864</created>

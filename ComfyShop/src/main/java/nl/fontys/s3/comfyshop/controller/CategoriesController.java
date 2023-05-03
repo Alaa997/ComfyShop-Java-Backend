@@ -1,7 +1,7 @@
 package nl.fontys.s3.comfyshop.controller;
 
 import lombok.AllArgsConstructor;
-import nl.fontys.s3.comfyshop.DTO.CategoryDTO;
+import nl.fontys.s3.comfyshop.dto.CategoryDTO;
 import nl.fontys.s3.comfyshop.bussiness.category.CreateCategoryUC;
 import nl.fontys.s3.comfyshop.bussiness.category.DeleteCategoryUC;
 import nl.fontys.s3.comfyshop.bussiness.category.GetCategoriesUC;

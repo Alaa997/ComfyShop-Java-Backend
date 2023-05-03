@@ -1,7 +1,7 @@
 package nl.fontys.s3.comfyshop.bussiness.product.impl;
 
 import lombok.AllArgsConstructor;
-import nl.fontys.s3.comfyshop.DTO.ProductDTO;
+import nl.fontys.s3.comfyshop.dto.ProductDTO;
 import nl.fontys.s3.comfyshop.bussiness.exception.InvalidCategoryException;
 import nl.fontys.s3.comfyshop.bussiness.exception.NameAlreadyExistsException;
 import nl.fontys.s3.comfyshop.bussiness.product.CreateProductUC;

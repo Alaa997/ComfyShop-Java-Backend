@@ -1,6 +1,6 @@
 package nl.fontys.s3.comfyshop.bussiness.category.impl;
 
-import nl.fontys.s3.comfyshop.DTO.CategoryDTO;
+import nl.fontys.s3.comfyshop.dto.CategoryDTO;
 import nl.fontys.s3.comfyshop.persistence.CategoryRepository;
 import nl.fontys.s3.comfyshop.persistence.entity.CategoryEntity;
 import org.junit.jupiter.api.Test;

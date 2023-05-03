@@ -40,7 +40,6 @@ class GetProductsByCategoryUCImplTest {
                 .id(1L)
                 .name("Ribs1")
                 .description("Tasty1")
-                .unit("kilo")
                 .price(5.5)
                 .category(categoryEntity)
                 .build();
@@ -48,7 +47,6 @@ class GetProductsByCategoryUCImplTest {
                 .id(2L)
                 .name("Ribs2")
                 .description("Tasty2")
-                .unit("kilo")
                 .price(6.5)
                 .category(categoryEntity)
                 .build();

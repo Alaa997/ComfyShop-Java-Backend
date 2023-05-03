@@ -43,7 +43,6 @@ class UpdateProductUCImplTest {
                 .id(1L)
                 .name("Ribs")
                 .description("Tasty")
-                .unit("kilo")
                 .price(5.5)
                 .category(categoryDTO)
                 .build();
@@ -61,7 +60,6 @@ class UpdateProductUCImplTest {
         // Assert
         assertEquals(request.getName(), productEntity.getName());
         assertEquals(request.getDescription(), productEntity.getDescription());
-        assertEquals(request.getUnit(), productEntity.getUnit());
         assertEquals(request.getPrice(), productEntity.getPrice());
         assertEquals(request.getCategory().getId(), productEntity.getCategory().getId());
         assertEquals(request.getCategory().getName(), productEntity.getCategory().getName());
@@ -75,7 +73,6 @@ class UpdateProductUCImplTest {
                 .id(1L)
                 .name("Ribs")
                 .description("Tasty")
-                .unit("kilo")
                 .price(5.5)
                 .category(categoryDTO)
                 .build();
@@ -95,7 +92,6 @@ class UpdateProductUCImplTest {
                 .id(1L)
                 .name("Ribs")
                 .description("Tasty")
-                .unit("kilo")
                 .price(5.5)
                 .category(categoryDTO)
                 .build();

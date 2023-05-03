@@ -39,7 +39,6 @@ class GetProductUCImplTest {
                 .id(productId)
                 .name("Ribs")
                 .description("Tasty")
-                .unit("kilo")
                 .price(5.5)
                 .category(categoryEntity)
                 .build();

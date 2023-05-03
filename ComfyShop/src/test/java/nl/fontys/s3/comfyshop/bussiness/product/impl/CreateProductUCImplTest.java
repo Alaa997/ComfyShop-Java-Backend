@@ -42,7 +42,6 @@ class CreateProductUCImplTest {
         ProductDTO request = ProductDTO.builder()
                 .name("Ribs")
                 .description("Tasty")
-                .unit("kilo")
                 .price(5.5)
                 .category(categoryDTO)
                 .build();
@@ -71,7 +70,6 @@ class CreateProductUCImplTest {
         ProductDTO request = ProductDTO.builder()
                 .name("Ribs")
                 .description("Tasty")
-                .unit("kilo")
                 .price(5.5)
                 .category(categoryDTO)
                 .build();
@@ -91,7 +89,6 @@ class CreateProductUCImplTest {
         ProductDTO request = ProductDTO.builder()
                 .name("Ribs")
                 .description("Tasty")
-                .unit("kilo")
                 .price(5.5)
                 .category(categoryDTO)
                 .build();

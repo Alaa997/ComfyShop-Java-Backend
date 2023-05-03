@@ -14,18 +14,18 @@ stages:
 build:
   stage: build
   script:
-    - cd ComfyShop
+#    - cd ComfyShop
     - ./gradlew assemble
 
 test:
   stage: test
   script:
-    - cd ComfyShop
+#    - cd ComfyShop
     - ./gradlew test
 
 sonar:
 stage: .post
 script:
-  - cd ComfyShop
+#  - cd ComfyShop
   - ./gradlew sonar
   - ./gradlew --stop

@@ -6,11 +6,11 @@ import javax.validation.constraints.NotBlank;
 
 @Data
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class LoginRequest {
     @NotBlank
-    private String email;
+    public String email;
     @NotBlank
-    private String password;
+    public String password;
 }

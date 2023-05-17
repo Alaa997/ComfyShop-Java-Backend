@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="f2e715d9-730d-4915-8846-c41c79ebbe63" name="Changes" comment="filter by category">
-      <change afterPath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/DTO/UserDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/bussiness/exception/EmailAlreadyExistsException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/bussiness/user/CreateUserUC.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/bussiness/user/impl/CreateUserUCImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/controller/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/mappers/UserMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/persistence/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/bussiness/user/impl/AppUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/bussiness/user/AppUserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/persistence/entity/AppUserRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/persistence/entity/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/persistence/entity/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/persistence/entity/UserEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/configuration/security/isauthenticated/IsAuthenticatedAspect.java" beforeDir="false" afterPath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/configuration/security/isauthenticated/IsAuthenticatedAspect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/controller/CategoriesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/controller/CategoriesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/controller/LoginController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/dto/user/LoginRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/dto/user/LoginRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ComfyShop/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ComfyShop/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,15 +33,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Spring Boot.ComfyShopApplication (1)">
     <configuration name="ComfyShopApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="nl.fontys.s3.comfyshop.ComfyShopApplication" />
@@ -161,6 +163,7 @@
       <workItem from="1680466547642" duration="21000" />
       <workItem from="1683109928056" duration="287000" />
       <workItem from="1683622492859" duration="13000" />
+      <workItem from="1684225441149" duration="479000" />
     </task>
     <task id="LOCAL-00001" summary="filter by category">
       <created>1683110073864</created>

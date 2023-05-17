@@ -2,6 +2,9 @@ package nl.fontys.s3.comfyshop.controller;
 
 import lombok.AllArgsConstructor;
 import nl.fontys.s3.comfyshop.bussiness.user.CreateUserUC;
+import nl.fontys.s3.comfyshop.bussiness.user.LoginUC;
+import nl.fontys.s3.comfyshop.dto.user.LoginRequest;
+import nl.fontys.s3.comfyshop.dto.user.LoginResponse;
 import nl.fontys.s3.comfyshop.dto.user.UserDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +18,7 @@ import javax.validation.Valid;
 @AllArgsConstructor
 public class UserController {
     private final CreateUserUC createUserUC;
+    private final LoginUC loginUC;
 
     @PostMapping("/sign-up")
     public ResponseEntity<UserDTO> createUser(@RequestBody @Valid UserDTO request){
@@ -22,5 +26,10 @@ public class UserController {
         return  ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
+    @PostMapping("/login")
+    public ResponseEntity<LoginResponse> login(@RequestBody @Valid LoginRequest loginRequest){
+        LoginResponse loginResponse = loginUC.login(loginRequest);
+        return ResponseEntity.status(HttpStatus.CREATED).body(loginResponse);
+    }
 
 }

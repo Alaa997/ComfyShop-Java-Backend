@@ -1,6 +1,7 @@
 package nl.fontys.s3.comfyshop.controller;
 
 import lombok.AllArgsConstructor;
+import nl.fontys.s3.comfyshop.bussiness.shoppingCart.CreateShoppingSessionUC;
 import nl.fontys.s3.comfyshop.bussiness.exception.EmailAlreadyExistsException;
 import nl.fontys.s3.comfyshop.bussiness.user.CreateUserUC;
 import nl.fontys.s3.comfyshop.bussiness.user.LoginUC;
@@ -19,6 +20,7 @@ import javax.validation.Valid;
 @AllArgsConstructor
 public class UserController {
     private final CreateUserUC createUserUC;
+    private final CreateShoppingSessionUC cartUC;
     private final LoginUC loginUC;
 
     @PostMapping("/sign-up")

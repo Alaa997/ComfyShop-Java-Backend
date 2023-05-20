@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import nl.fontys.s3.comfyshop.persistence.entity.UserEntity;
 
 import javax.persistence.*;
-import java.util.List;
+
 @Entity
 @Builder
 @Data
@@ -22,7 +22,7 @@ public class ShoppingSessionEntity {
     @OneToOne
     @JoinColumn(name = "user_id")
     private UserEntity user;
-    private Double total;
-    @OneToMany(mappedBy = "shoppingSession", cascade = CascadeType.ALL)
-    private List<CartItemEntity> cartItems;
+//    @OneToMany(mappedBy = "shoppingSession", cascade = CascadeType.ALL)
+//    private List<CartItemEntity> cartItems = new ArrayList<>();
+    private boolean ordered = false;
 }

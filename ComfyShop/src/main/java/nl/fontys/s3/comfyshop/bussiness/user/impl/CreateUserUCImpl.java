@@ -1,6 +1,7 @@
 package nl.fontys.s3.comfyshop.bussiness.user.impl;
 
 import lombok.RequiredArgsConstructor;
+import nl.fontys.s3.comfyshop.bussiness.shoppingCart.CreateShoppingSessionUC;
 import nl.fontys.s3.comfyshop.bussiness.exception.EmailAlreadyExistsException;
 import nl.fontys.s3.comfyshop.bussiness.user.CreateUserUC;
 import nl.fontys.s3.comfyshop.dto.user.UserDTO;
@@ -18,6 +19,7 @@ import javax.transaction.Transactional;
 @RequiredArgsConstructor
 public class CreateUserUCImpl implements CreateUserUC {
     private final UserRepository userRepository;
+    private final CreateShoppingSessionUC createShoppingCartUC;
     private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
 
@@ -28,6 +30,7 @@ public class CreateUserUCImpl implements CreateUserUC {
             throw new EmailAlreadyExistsException();
         }
         UserEntity savedUser = saveNewUser(UserMapper.mapperToEntity(request), request.getPassword());
+        createShoppingCartUC.createShoppingSession(savedUser);
         return UserMapper.mapperToDTO(savedUser);
     }
 

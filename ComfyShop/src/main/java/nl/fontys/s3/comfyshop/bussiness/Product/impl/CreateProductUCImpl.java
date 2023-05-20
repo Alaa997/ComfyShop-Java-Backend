@@ -26,7 +26,7 @@ public class CreateProductUCImpl implements CreateProductUC {
             throw new NameAlreadyExistsException();
 
         Optional<CategoryEntity> categoryOptional = categoryRepository.findById(productDTO.getCategory().getId());
-        if (categoryOptional.isEmpty())
+        if (!categoryOptional.isPresent())
             throw new InvalidCategoryException("CATEGORY_ID_INVALID");
 
         ProductEntity savedProduct = save(ProductMapper.mapperToEntity(productDTO));

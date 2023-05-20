@@ -1,6 +1,7 @@
 package nl.fontys.s3.comfyshop.controller;
 
 import lombok.AllArgsConstructor;
+import nl.fontys.s3.comfyshop.bussiness.exception.EmailAlreadyExistsException;
 import nl.fontys.s3.comfyshop.bussiness.user.CreateUserUC;
 import nl.fontys.s3.comfyshop.bussiness.user.LoginUC;
 import nl.fontys.s3.comfyshop.dto.user.LoginRequest;
@@ -21,13 +22,17 @@ public class UserController {
     private final LoginUC loginUC;
 
     @PostMapping("/sign-up")
-    public ResponseEntity<UserDTO> createUser(@RequestBody @Valid UserDTO request){
-        UserDTO response = createUserUC.createUser(request);
-        return  ResponseEntity.status(HttpStatus.CREATED).body(response);
+    public ResponseEntity<UserDTO> createUser(@RequestBody @Valid UserDTO request) {
+        try {
+            UserDTO response = createUserUC.createUser(request);
+            return ResponseEntity.status(HttpStatus.CREATED).body(response);
+        } catch (EmailAlreadyExistsException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        }
     }
 
     @PostMapping("/login")
-    public ResponseEntity<LoginResponse> login(@RequestBody @Valid LoginRequest loginRequest){
+    public ResponseEntity<LoginResponse> login(@RequestBody @Valid LoginRequest loginRequest) {
         LoginResponse loginResponse = loginUC.login(loginRequest);
         return ResponseEntity.status(HttpStatus.CREATED).body(loginResponse);
     }

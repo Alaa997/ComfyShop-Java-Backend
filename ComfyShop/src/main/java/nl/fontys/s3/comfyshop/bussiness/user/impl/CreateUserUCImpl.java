@@ -7,7 +7,6 @@ import nl.fontys.s3.comfyshop.dto.user.UserDTO;
 import nl.fontys.s3.comfyshop.mappers.UserMapper;
 import nl.fontys.s3.comfyshop.persistence.RoleRepository;
 import nl.fontys.s3.comfyshop.persistence.UserRepository;
-import nl.fontys.s3.comfyshop.persistence.entity.RoleEntity;
 import nl.fontys.s3.comfyshop.persistence.entity.RoleEnum;
 import nl.fontys.s3.comfyshop.persistence.entity.UserEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -35,7 +34,7 @@ public class CreateUserUCImpl implements CreateUserUC {
     private UserEntity saveNewUser(UserEntity user, String password) {
         String encodedPassword = passwordEncoder.encode(password);
         user.setPassword(encodedPassword);
-        user.setRole(RoleEntity.builder().id(1L).role(RoleEnum.CUSTOMER).build());
+        user.setRole(roleRepository.findByRole(RoleEnum.CUSTOMER));
         return userRepository.save(user);
     }
 

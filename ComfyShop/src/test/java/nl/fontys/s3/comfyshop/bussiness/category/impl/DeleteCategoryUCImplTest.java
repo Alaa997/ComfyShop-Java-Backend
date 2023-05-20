@@ -5,7 +5,8 @@ import nl.fontys.s3.comfyshop.persistence.CategoryRepository;
 import nl.fontys.s3.comfyshop.persistence.ProductRepository;
 import org.junit.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.*;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.Assert.assertThrows;
@@ -19,7 +20,7 @@ class DeleteCategoryUCImplTest {
     @Mock
     private ProductRepository productRepositoryMock;
     @InjectMocks
-    private DeleteCategoryUCImpl deleteCategoryUC;
+    private nl.fontys.s3.comfyshop.bussiness.category.impl.DeleteCategoryUCImpl deleteCategoryUC;
 
     @Test
     void deleteCategory_success() {

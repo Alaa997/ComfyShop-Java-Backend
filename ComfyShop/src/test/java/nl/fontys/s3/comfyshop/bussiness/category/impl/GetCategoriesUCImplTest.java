@@ -5,19 +5,22 @@ import nl.fontys.s3.comfyshop.persistence.CategoryRepository;
 import nl.fontys.s3.comfyshop.persistence.entity.CategoryEntity;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.*;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
+
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class GetCategoriesUCImplTest {
     @Mock
     private CategoryRepository categoryRepositoryMock;
     @InjectMocks
-    private GetCategoriesUCImpl getCategoriesUC;
+    private nl.fontys.s3.comfyshop.bussiness.category.impl.GetCategoriesUCImpl getCategoriesUC;
 
     @Test
     void getCategories_Success() {

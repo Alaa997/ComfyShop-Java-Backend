@@ -1,4 +1,4 @@
-package nl.fontys.s3.comfyshop.bussiness.product.impl;
+package nl.fontys.s3.comfyshop.bussiness.Product.impl;
 
 import lombok.AllArgsConstructor;
 import nl.fontys.s3.comfyshop.bussiness.exception.InvalidProductException;

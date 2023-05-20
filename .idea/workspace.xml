@@ -5,12 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f2e715d9-730d-4915-8846-c41c79ebbe63" name="Changes" comment="filter by category">
-      <change beforePath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/configuration/security/isauthenticated/IsAuthenticatedAspect.java" beforeDir="false" afterPath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/configuration/security/isauthenticated/IsAuthenticatedAspect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/controller/CategoriesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/controller/CategoriesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/controller/LoginController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/dto/user/LoginRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/dto/user/LoginRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ComfyShop/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ComfyShop/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/bussiness/cart/CreateCartUC.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/bussiness/cart/impl/CreateCartUCImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/dto/cart/CartDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/dto/cart/CartItemDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/dto/order/OrderDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/dto/order/OrderItemDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/persistence/CartItemRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/persistence/CartRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/persistence/entity/CartEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/persistence/entity/CartItemEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/persistence/entity/OrderEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/persistence/entity/OrderItemEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/bussiness/Product/impl/GetAllProductsUCImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/bussiness/Product/impl/GetAllProductsUCImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/controller/ProductsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ComfyShop/src/main/java/nl/fontys/s3/comfyshop/controller/ProductsController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,19 +42,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Spring Boot.ComfyShopApplication (1)">
     <configuration name="ComfyShopApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="nl.fontys.s3.comfyshop.ComfyShopApplication" />
@@ -164,6 +173,7 @@
       <workItem from="1683109928056" duration="287000" />
       <workItem from="1683622492859" duration="13000" />
       <workItem from="1684225441149" duration="479000" />
+      <workItem from="1684428654263" duration="75000" />
     </task>
     <task id="LOCAL-00001" summary="filter by category">
       <created>1683110073864</created>

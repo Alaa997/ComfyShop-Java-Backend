@@ -1,5 +1,6 @@
 package nl.fontys.s3.comfyshop.bussiness.product.impl;
 
+import nl.fontys.s3.comfyshop.bussiness.Product.GetAllProductsUC;
 import nl.fontys.s3.comfyshop.dto.ProductDTO;
 import nl.fontys.s3.comfyshop.mappers.ProductMapper;
 import nl.fontys.s3.comfyshop.persistence.ProductRepository;
@@ -25,7 +26,7 @@ class GetAllProductsUCImplTest {
     @Mock
     private ProductMapper productMapperMock;
     @InjectMocks
-    private GetAllProductsUCImpl getAllProductsUC;
+    private GetAllProductsUC getAllProductsUC;
 
     @Test
     void getAllProductsUC() {

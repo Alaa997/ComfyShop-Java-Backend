@@ -1,25 +1,27 @@
 package nl.fontys.s3.comfyshop.bussiness.category.impl;
 
-import nl.fontys.s3.comfyshop.dto.CategoryDTO;
 import nl.fontys.s3.comfyshop.bussiness.exception.InvalidCategoryException;
+import nl.fontys.s3.comfyshop.dto.CategoryDTO;
 import nl.fontys.s3.comfyshop.persistence.CategoryRepository;
 import nl.fontys.s3.comfyshop.persistence.entity.CategoryEntity;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.*;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Optional;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
 import static org.mockito.Mockito.*;
-import static org.junit.Assert.*;
 
 @ExtendWith(MockitoExtension.class)
 class UpdateCategoryUCImplTest {
     @Mock
     private CategoryRepository categoryRepositoryMock;
     @InjectMocks
-    private UpdateCategoryUCImpl updateCategoryUC;
+    private nl.fontys.s3.comfyshop.bussiness.category.impl.UpdateCategoryUCImpl updateCategoryUC;
 
     @Test
     void updateCategory_Success() {

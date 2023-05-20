@@ -1,9 +1,10 @@
 package nl.fontys.s3.comfyshop.bussiness.product.impl;
 
-import nl.fontys.s3.comfyshop.dto.CategoryDTO;
-import nl.fontys.s3.comfyshop.dto.ProductDTO;
+import nl.fontys.s3.comfyshop.bussiness.Product.impl.CreateProductUCImpl;
 import nl.fontys.s3.comfyshop.bussiness.exception.InvalidCategoryException;
 import nl.fontys.s3.comfyshop.bussiness.exception.NameAlreadyExistsException;
+import nl.fontys.s3.comfyshop.dto.CategoryDTO;
+import nl.fontys.s3.comfyshop.dto.ProductDTO;
 import nl.fontys.s3.comfyshop.mappers.CategoryMapper;
 import nl.fontys.s3.comfyshop.mappers.ProductMapper;
 import nl.fontys.s3.comfyshop.persistence.CategoryRepository;

@@ -1,8 +1,12 @@
 package nl.fontys.s3.comfyshop.controller;
 
 import lombok.AllArgsConstructor;
+import nl.fontys.s3.comfyshop.bussiness.Product.GetAllProductsUC;
+import nl.fontys.s3.comfyshop.bussiness.product.CreateProductUC;
+import nl.fontys.s3.comfyshop.bussiness.product.GetProductUC;
+import nl.fontys.s3.comfyshop.bussiness.product.GetProductsByCategoryUC;
+import nl.fontys.s3.comfyshop.bussiness.product.UpdateProductUC;
 import nl.fontys.s3.comfyshop.dto.ProductDTO;
-import nl.fontys.s3.comfyshop.bussiness.product.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +25,7 @@ public class ProductsController {
     private final GetProductsByCategoryUC getProductsByCategoryUC;
     private final GetProductUC getProductUC;
     private final GetAllProductsUC getAllProductsUC;
-    private final DeleteProductUC deleteProductUC;
+    private final nl.fontys.s3.comfyshop.bussiness.product.DeleteProductUC deleteProductUC;
 
     @GetMapping("/product/{id}")
     public final ResponseEntity<ProductDTO> getProduct(@PathVariable(value = "id") final long id) {

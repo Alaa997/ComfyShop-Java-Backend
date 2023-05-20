@@ -1,7 +1,7 @@
 package nl.fontys.s3.comfyshop.bussiness.category.impl;
 
-import nl.fontys.s3.comfyshop.dto.CategoryDTO;
 import nl.fontys.s3.comfyshop.bussiness.exception.NameAlreadyExistsException;
+import nl.fontys.s3.comfyshop.dto.CategoryDTO;
 import nl.fontys.s3.comfyshop.persistence.CategoryRepository;
 import nl.fontys.s3.comfyshop.persistence.entity.CategoryEntity;
 import org.junit.jupiter.api.Test;
@@ -10,7 +10,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -18,7 +19,7 @@ class CreateCategoryUCImplTest {
     @Mock
     private CategoryRepository categoryRepositoryMock;
     @InjectMocks
-    private CreateCategoryUCImpl createCategoryUC;
+    private nl.fontys.s3.comfyshop.bussiness.category.impl.CreateCategoryUCImpl createCategoryUC;
 
     @Test
     void createCategorySuccess() {

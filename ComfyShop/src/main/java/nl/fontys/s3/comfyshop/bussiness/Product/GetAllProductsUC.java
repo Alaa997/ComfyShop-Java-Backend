@@ -1,4 +1,4 @@
-package nl.fontys.s3.comfyshop.bussiness.product;
+package nl.fontys.s3.comfyshop.bussiness.Product;
 
 import nl.fontys.s3.comfyshop.dto.ProductDTO;
 

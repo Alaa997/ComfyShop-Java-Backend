@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
-@RequestMapping("/cart")
+@RequestMapping("/shopping_session")
 @AllArgsConstructor
 public class CartShoppingController {
 

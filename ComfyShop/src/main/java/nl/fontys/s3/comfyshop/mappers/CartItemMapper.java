@@ -4,6 +4,8 @@ import nl.fontys.s3.comfyshop.dto.shopping.CartItemDTO;
 import nl.fontys.s3.comfyshop.persistence.entity.shopping.CartItemEntity;
 import org.modelmapper.ModelMapper;
 
+import java.util.List;
+
 public class CartItemMapper {
     public CartItemMapper() {}
 
@@ -16,5 +18,8 @@ public class CartItemMapper {
         ModelMapper modelMapper = new ModelMapper();
         CartItemEntity cartItemEntity = modelMapper.map(cartItemDTO, CartItemEntity.class);
         return cartItemEntity;
+    }
+    public static List<CartItemDTO> toDTOList(List<CartItemEntity> cartItemEntities){
+        return cartItemEntities.stream().map(CartItemMapper::mapperToDTO).toList();
     }
 }

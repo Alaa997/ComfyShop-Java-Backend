@@ -1,6 +1,5 @@
 package nl.fontys.s3.comfyshop.bussiness.product.impl;
 
-import nl.fontys.s3.comfyshop.bussiness.Product.impl.CreateProductUCImpl;
 import nl.fontys.s3.comfyshop.bussiness.exception.InvalidCategoryException;
 import nl.fontys.s3.comfyshop.bussiness.exception.NameAlreadyExistsException;
 import nl.fontys.s3.comfyshop.dto.CategoryDTO;
@@ -20,8 +19,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
-
+import static org.mockito.Mockito.never;
 @ExtendWith(MockitoExtension.class)
 class CreateProductUCImplTest {
 

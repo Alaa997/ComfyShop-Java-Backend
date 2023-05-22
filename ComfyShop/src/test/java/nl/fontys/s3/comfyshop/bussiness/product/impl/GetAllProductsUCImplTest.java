@@ -1,6 +1,6 @@
 package nl.fontys.s3.comfyshop.bussiness.product.impl;
 
-import nl.fontys.s3.comfyshop.bussiness.Product.GetAllProductsUC;
+import nl.fontys.s3.comfyshop.bussiness.product.GetAllProductsUC;
 import nl.fontys.s3.comfyshop.dto.ProductDTO;
 import nl.fontys.s3.comfyshop.mappers.ProductMapper;
 import nl.fontys.s3.comfyshop.persistence.ProductRepository;

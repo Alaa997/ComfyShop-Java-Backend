@@ -1,6 +1,5 @@
 package nl.fontys.s3.comfyshop.bussiness.product.impl;
 
-import nl.fontys.s3.comfyshop.bussiness.Product.impl.DeleteProductUCImpl;
 import nl.fontys.s3.comfyshop.bussiness.exception.InvalidProductException;
 import nl.fontys.s3.comfyshop.persistence.ProductRepository;
 import org.junit.jupiter.api.Test;

@@ -1,11 +1,7 @@
 package nl.fontys.s3.comfyshop.controller;
 
 import lombok.AllArgsConstructor;
-import nl.fontys.s3.comfyshop.bussiness.Product.GetAllProductsUC;
-import nl.fontys.s3.comfyshop.bussiness.product.CreateProductUC;
-import nl.fontys.s3.comfyshop.bussiness.product.GetProductUC;
-import nl.fontys.s3.comfyshop.bussiness.product.GetProductsByCategoryUC;
-import nl.fontys.s3.comfyshop.bussiness.product.UpdateProductUC;
+import nl.fontys.s3.comfyshop.bussiness.product.*;
 import nl.fontys.s3.comfyshop.dto.ProductDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

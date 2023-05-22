@@ -10,10 +10,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProductDTO {
-    public Long id;
-    public String name;
-    public String description;
-    public Double price;
-    public CategoryDTO category;
+    private Long id;
+    private String name;
+    private String description;
+    private Double price;
+    private CategoryDTO category;
 
 }

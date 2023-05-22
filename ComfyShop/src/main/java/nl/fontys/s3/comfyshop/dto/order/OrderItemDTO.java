@@ -7,5 +7,5 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class OrderItemDTO {
-    public Long id;
+    private Long id;
 }

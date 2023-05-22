@@ -20,18 +20,17 @@ public class ProductEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    public Long id;
+    private Long id;
     @NotBlank
     @Length(min = 3 ,max = 20)
     @Column(name = "name")
-    public String name;
+    private String name;
     @NotBlank
     @Column(name = "description")
-    public String description;
+    private String description;
     @NotNull
-    public Double price;
-//    @NotBlank
+    private Double price;
     @ManyToOne
     @JoinColumn(name = "category_id")
-    public CategoryEntity category;
+    private CategoryEntity category;
 }

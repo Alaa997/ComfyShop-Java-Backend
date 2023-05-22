@@ -20,11 +20,11 @@ public class CategoryEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    public Long id;
+    private Long id;
 
     @Length(min = 3 ,max = 20)
     @Column(name = "name")
-    public String name;
+    private String name;
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
-    public List<ProductEntity> products;
+    private List<ProductEntity> products;
 }

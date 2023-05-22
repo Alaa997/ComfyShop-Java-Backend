@@ -6,6 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import nl.fontys.s3.comfyshop.dto.user.UserDTO;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @Builder
 @AllArgsConstructor
@@ -13,6 +16,7 @@ import nl.fontys.s3.comfyshop.dto.user.UserDTO;
 public class ShoppingSessionDTO {
     private Long id;
     private UserDTO user;
-//    private List<CartItemDTO> cartItems;
+    @Builder.Default
+    private List<CartItemDTO> cartItems = new ArrayList<>();
     private boolean ordered;
 }

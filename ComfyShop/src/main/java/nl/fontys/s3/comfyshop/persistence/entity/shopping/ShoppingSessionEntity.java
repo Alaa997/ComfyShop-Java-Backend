@@ -24,7 +24,9 @@ public class ShoppingSessionEntity {
     @OneToOne
     @JoinColumn(name = "user_id")
     private UserEntity user;
+    @Builder.Default
     @OneToMany(mappedBy = "shoppingSession", cascade = CascadeType.ALL)
     private List<CartItemEntity> cartItems = new ArrayList<>();
+    @Builder.Default
     private boolean ordered = false;
 }

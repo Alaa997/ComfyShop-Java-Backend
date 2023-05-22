@@ -25,7 +25,7 @@ public class AddToCartUCImpl implements AddToCartUC {
             existingCartItem.setQuantity(existingCartItem.getQuantity() + request.getQuantity());
             cartItemRepository.save(existingCartItem);
         } else {
-            CartItemEntity newCartItem = CartItemMapper.mapperToEntity(request);
+            CartItemEntity newCartItem = CartItemMapper.toEntity(request);
             cartItemRepository.save(newCartItem);
         }
 

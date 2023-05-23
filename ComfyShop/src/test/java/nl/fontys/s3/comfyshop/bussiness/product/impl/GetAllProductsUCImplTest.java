@@ -1,6 +1,5 @@
 package nl.fontys.s3.comfyshop.bussiness.product.impl;
 
-import nl.fontys.s3.comfyshop.bussiness.product.GetAllProductsUC;
 import nl.fontys.s3.comfyshop.dto.ProductDTO;
 import nl.fontys.s3.comfyshop.mappers.ProductMapper;
 import nl.fontys.s3.comfyshop.persistence.ProductRepository;
@@ -15,8 +14,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.mockito.Mockito.when;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
 
 
 @ExtendWith(MockitoExtension.class)
@@ -26,7 +25,7 @@ class GetAllProductsUCImplTest {
     @Mock
     private ProductMapper productMapperMock;
     @InjectMocks
-    private GetAllProductsUC getAllProductsUC;
+    private GetAllProductsUCImpl getAllProductsUC;
 
     @Test
     void getAllProductsUC() {

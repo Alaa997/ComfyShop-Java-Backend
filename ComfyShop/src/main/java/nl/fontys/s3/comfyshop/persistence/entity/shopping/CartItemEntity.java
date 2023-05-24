@@ -10,12 +10,13 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "cart_item")
+@ToString(exclude = {"shoppingSession"})
 public class CartItemEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-
+//    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "session_id")
     private ShoppingSessionEntity shoppingSession;

@@ -1,10 +1,6 @@
 package nl.fontys.s3.comfyshop.persistence.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import nl.fontys.s3.comfyshop.persistence.entity.shopping.ShoppingSessionEntity;
 
 import javax.persistence.*;
@@ -14,6 +10,7 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+//@ToString(exclude = "shoppingSession")
 @Table(name = "user")
 public class UserEntity {
     @Id
@@ -28,7 +25,6 @@ public class UserEntity {
     @ManyToOne
     @JoinColumn(name = "role_id")
     private RoleEntity role;
-    @JsonIgnore
     @OneToOne(mappedBy = "user")
     private ShoppingSessionEntity shoppingSession;
 }

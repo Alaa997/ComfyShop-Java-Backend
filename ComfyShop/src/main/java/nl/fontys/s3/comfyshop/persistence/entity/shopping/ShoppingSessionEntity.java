@@ -1,9 +1,6 @@
 package nl.fontys.s3.comfyshop.persistence.entity.shopping;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import nl.fontys.s3.comfyshop.persistence.entity.UserEntity;
 
 import javax.persistence.*;
@@ -15,6 +12,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+//@ToString(exclude = "cartItems")
 @Table(name = "shopping_session")
 public class ShoppingSessionEntity {
     @Id
@@ -25,7 +23,7 @@ public class ShoppingSessionEntity {
     @JoinColumn(name = "user_id")
     private UserEntity user;
     @Builder.Default
-    @OneToMany(mappedBy = "shoppingSession", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "shoppingSession", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<CartItemEntity> cartItems = new ArrayList<>();
     @Builder.Default
     private boolean ordered = false;

@@ -11,6 +11,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString(exclude = "users")
 @Table(name = "user_role")
 public class RoleEntity {
     @Id
@@ -24,7 +25,5 @@ public class RoleEntity {
     private RoleEnum role;
 
     @OneToMany(mappedBy = "role", cascade = CascadeType.ALL, orphanRemoval = true)
-    @ToString.Exclude
-    @EqualsAndHashCode.Exclude
     private List<UserEntity> users;
 }

@@ -1,20 +1,17 @@
 package nl.fontys.s3.comfyshop.persistence.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import java.util.List;
-//import javax.validation.constraints.NotBlank;
 
 @Entity
 @Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString(exclude = "products")
 @Table(name = "category")
 public class CategoryEntity {
     @Id

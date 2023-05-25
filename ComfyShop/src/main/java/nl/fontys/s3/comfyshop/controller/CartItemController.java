@@ -10,7 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+//@IsAuthenticated
+//@RolesAllowed({"ROLE_CUSTOMER"})
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/cart")
@@ -20,7 +21,6 @@ public class CartItemController {
     private final GetCartItemsUC getCartItemsUC;
     private final RemoveCartItemUC removeCartItemUC;
     private final UpdateCartItemUC updateCartItemUC;
-
     @PostMapping("/add")
     public ResponseEntity<?> addToCart(@RequestBody CartItemDTO request) {
         boolean added = addToCartUC.addToCart(request);

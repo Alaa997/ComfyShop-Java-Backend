@@ -17,8 +17,8 @@ public class RemoveCartItemUCImpl implements RemoveCartItemUC {
         Optional<CartItemEntity> cartItemOptional = cartItemRepository.findById(id);
 
         if (cartItemOptional.isPresent()) {
-            CartItemEntity cartItem = cartItemOptional.get();
-            cartItemRepository.delete(cartItem);
+//            CartItemEntity cartItem = cartItemOptional.get();
+            cartItemRepository.deleteById(id);
             return true;
         }
         return false;

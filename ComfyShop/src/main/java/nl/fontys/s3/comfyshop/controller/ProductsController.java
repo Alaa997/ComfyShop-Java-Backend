@@ -2,11 +2,13 @@ package nl.fontys.s3.comfyshop.controller;
 
 import lombok.AllArgsConstructor;
 import nl.fontys.s3.comfyshop.bussiness.product.*;
+import nl.fontys.s3.comfyshop.configuration.security.isauthenticated.IsAuthenticated;
 import nl.fontys.s3.comfyshop.dto.ProductDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
@@ -42,20 +44,23 @@ public class ProductsController {
         }
         return ResponseEntity.ok(products);
     }
-
+    @IsAuthenticated
+    @RolesAllowed({"ROLE_ADMIN"})
     @PostMapping()
     public ResponseEntity<ProductDTO> createProduct(@RequestBody @Valid ProductDTO request) {
         ProductDTO response = createProductUC.createProduct(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
-
+    @IsAuthenticated
+    @RolesAllowed({"ROLE_ADMIN"})
     @PutMapping("{id}")
     public ResponseEntity<Void> updateProduct(@PathVariable("id") long id, @RequestBody @Valid ProductDTO request) {
         request.setId(id);
         updateProductUC.updateProduct(request);
         return ResponseEntity.noContent().build();
     }
-
+    @IsAuthenticated
+    @RolesAllowed({"ROLE_ADMIN"})
     @DeleteMapping("{productId}")
     public ResponseEntity<Void> deleteProduct(@PathVariable long productId) {
         deleteProductUC.deleteProduct(productId);

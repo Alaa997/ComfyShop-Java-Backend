@@ -9,7 +9,7 @@ import nl.fontys.s3.comfyshop.dto.ProductDTO;
 @NoArgsConstructor
 public class CartItemDTO {
     private Long id;
-    private ShoppingSessionDTO shoppingSession;
+    private Long sessionId;
     private ProductDTO product;
     private int quantity;
 }

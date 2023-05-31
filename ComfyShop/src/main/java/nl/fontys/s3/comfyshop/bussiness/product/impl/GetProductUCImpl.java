@@ -23,15 +23,4 @@ public class GetProductUCImpl implements GetProductUC {
         return Optional.ofNullable(ProductMapper.mapperToDTO(productOptional.get()));
     }
 
-//    @Override
-//    public Optional<ProductDTO> getProduct(Long id) {
-//        Optional<ProductEntity> productOptional = productRepository.findById(id);
-//
-//        if (productOptional.isPresent()) {
-//            ProductEntity productEntity = productOptional.get();
-//            return Optional.ofNullable(ProductMapper.mapperToDTO(productEntity));
-//        }
-//
-//        return null; // or throw an exception if desired
-//    }
 }

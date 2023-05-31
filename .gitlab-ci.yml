@@ -5,6 +5,7 @@
 
 variables:
   GRADLE_OPTS: "-Dorg.gradle.daemon=false"
+  GIT_DEPTH: "1000"
 
 stages:
   - build
@@ -13,11 +14,18 @@ stages:
 build:
   stage: build
   script:
-    - cd "ComfyShop"
+    - cd ComfyShop
     - ./gradlew assemble
 
 test:
   stage: test
   script:
-    - cd "ComfyShop"
+    - cd ComfyShop
     - ./gradlew test
+
+sonar:
+  stage: .post
+  script:
+    - cd ComfyShop
+    - ./gradlew sonar
+    - ./gradlew --stop

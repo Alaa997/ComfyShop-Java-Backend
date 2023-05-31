@@ -1,6 +1,7 @@
 package nl.fontys.s3.comfyshop.bussiness.product.impl;
 
 import lombok.AllArgsConstructor;
+import nl.fontys.s3.comfyshop.bussiness.exception.InvalidProductException;
 import nl.fontys.s3.comfyshop.bussiness.product.GetProductUC;
 import nl.fontys.s3.comfyshop.dto.ProductDTO;
 import nl.fontys.s3.comfyshop.mappers.ProductMapper;
@@ -13,24 +14,24 @@ import java.util.Optional;
 @AllArgsConstructor
 public class GetProductUCImpl implements GetProductUC {
     private final ProductRepository productRepository;
-//    @Override
-//    public Optional<ProductDTO> getProduct(long productId) {
-//        Optional<ProductEntity> productOptional = productRepository.findById(productId);
-//        if (productOptional.isEmpty()) {
-//            throw new InvalidProductException("PRODUCT_ID_INVALID");
-//        }
-//        return Optional.ofNullable(ProductMapper.mapperToDTO(productOptional.get()));
-//    }
-
     @Override
-    public Optional<ProductDTO> getProduct(Long id) {
-        Optional<ProductEntity> productOptional = productRepository.findById(id);
-
-        if (productOptional.isPresent()) {
-            ProductEntity productEntity = productOptional.get();
-            return Optional.ofNullable(ProductMapper.mapperToDTO(productEntity));
+    public Optional<ProductDTO> getProduct(Long productId) {
+        Optional<ProductEntity> productOptional = productRepository.findById(productId);
+        if (productOptional.isEmpty()) {
+            throw new InvalidProductException("PRODUCT_ID_INVALID");
         }
-
-        return null; // or throw an exception if desired
+        return Optional.ofNullable(ProductMapper.mapperToDTO(productOptional.get()));
     }
+
+//    @Override
+//    public Optional<ProductDTO> getProduct(Long id) {
+//        Optional<ProductEntity> productOptional = productRepository.findById(id);
+//
+//        if (productOptional.isPresent()) {
+//            ProductEntity productEntity = productOptional.get();
+//            return Optional.ofNullable(ProductMapper.mapperToDTO(productEntity));
+//        }
+//
+//        return null; // or throw an exception if desired
+//    }
 }

@@ -24,8 +24,8 @@ test:
     - ./gradlew test
 
 sonar:
-stage: .post
-script:
-  - cd ComfyShop
-  - ./gradlew sonar
-  - ./gradlew --stop
+  stage: .post
+  script:
+    - cd ComfyShop
+    - ./gradlew sonar
+    - ./gradlew --stop

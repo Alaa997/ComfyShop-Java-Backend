@@ -18,7 +18,13 @@ public class RemoveCartItemUCImpl implements RemoveCartItemUC {
 
         if (cartItemOptional.isPresent()) {
 //            CartItemEntity cartItem = cartItemOptional.get();
-            cartItemRepository.deleteById(id);
+          try
+          {
+              cartItemRepository.delete(cartItemOptional.get());
+          }
+          catch (Exception e) {
+          System.out.println(e.getMessage());
+          }
             return true;
         }
         return false;

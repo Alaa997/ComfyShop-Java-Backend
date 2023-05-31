@@ -38,6 +38,7 @@ public class CategoriesController {
         CategoryDTO response = createCategoryUC.createCategory(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
+
     @IsAuthenticated
     @RolesAllowed({"ROLE_ADMIN"})
     @PutMapping({"id"})
@@ -46,6 +47,9 @@ public class CategoriesController {
         updateCategoryUC.updateCategory(request);
         return ResponseEntity.noContent().build();
     }
+
+    //    @IsAuthenticated
+//    @RolesAllowed({"ROLE_ADMIN"})
     @IsAuthenticated
     @RolesAllowed({"ROLE_ADMIN"})
     @DeleteMapping("/{id}")

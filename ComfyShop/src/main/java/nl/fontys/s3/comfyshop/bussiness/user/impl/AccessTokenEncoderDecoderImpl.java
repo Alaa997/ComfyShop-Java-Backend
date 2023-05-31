@@ -1,7 +1,7 @@
 package nl.fontys.s3.comfyshop.bussiness.user.impl;
 
 import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwt;
+import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
@@ -53,11 +53,33 @@ public class AccessTokenEncoderDecoderImpl implements AccessTokenEncoder, Access
                 .compact();
     }
 
+    //    @Override
+//    public AccessToken decode(String accessTokenEncoded) {
+//        try {
+//            Jwt jwt = Jwts.parserBuilder().setSigningKey(key).build().parse(accessTokenEncoded);
+//            Claims claims = (Claims) jwt.getBody();
+//
+//            List<String> roles = claims.get("roles", List.class);
+//
+//            return AccessToken.builder()
+//                    .subject(claims.getSubject())
+//                    .roles(roles)
+//                    .userId(claims.get("userId", Long.class))
+//                    .shoppingSessionId(claims.get("shoppingSessionId", Long.class))
+//                    .build();
+//        } catch (JwtException e) {
+//            throw new InvalidAccessTokenException(e.getMessage());
+//        }
+//    }
     @Override
     public AccessToken decode(String accessTokenEncoded) {
         try {
-            Jwt jwt = Jwts.parserBuilder().setSigningKey(key).build().parse(accessTokenEncoded);
-            Claims claims = (Claims) jwt.getBody();
+            Jws<Claims> jws = Jwts.parserBuilder()
+                    .setSigningKey(key)
+                    .build()
+                    .parseClaimsJws(accessTokenEncoded);
+
+            Claims claims = jws.getBody();
 
             List<String> roles = claims.get("roles", List.class);
 
@@ -65,7 +87,6 @@ public class AccessTokenEncoderDecoderImpl implements AccessTokenEncoder, Access
                     .subject(claims.getSubject())
                     .roles(roles)
                     .userId(claims.get("userId", Long.class))
-                    .shoppingSessionId(claims.get("shoppingSessionId", Long.class))
                     .build();
         } catch (JwtException e) {
             throw new InvalidAccessTokenException(e.getMessage());

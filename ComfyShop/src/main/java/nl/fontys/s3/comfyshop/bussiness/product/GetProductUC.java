@@ -5,5 +5,5 @@ import nl.fontys.s3.comfyshop.dto.ProductDTO;
 import java.util.Optional;
 
 public interface GetProductUC {
-    Optional<ProductDTO> getProduct(long id);
+    Optional<ProductDTO> getProduct(Long id);
 }

@@ -22,7 +22,7 @@ public class GetOrdersUCImpl implements GetOrdersUC {
     @Override
     public List<ShoppingSessionDTO> getOrders(Long userId) {
         UserEntity user = userRepository.getById(userId);
-        List<ShoppingSessionEntity> orderEntity = shoppingRepository.getByUserAndOrderedTrue(user);
+        List<ShoppingSessionEntity> orderEntity = shoppingRepository.getByUserAndOrderedTrueOrderedByIdDesc(user);
         List<ShoppingSessionDTO> ordersDTOs = new ArrayList<>();
 
         for (ShoppingSessionEntity order : orderEntity) {

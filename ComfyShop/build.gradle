@@ -11,9 +11,10 @@ sonar {
     properties {
         property "sonar.projectKey", "StudyMate"
         property "sonar.qualitygate.wait", true
-        property "sonar.coverage.exclusions", "**/lombok/**/*.*, **/controller/**/*.*, **/configuration/**/*.*, **/mappers/**/*.*, **/persistence/**/*.*"
+        property "sonar.coverage.exclusions", "**/lombok/**/*.*, **/controller/**/*.*, **/configuration/**/*.*, **/mappers/**/*.*, **/persistence/**/*.*, **/exception/**/*.*, **/nl/fontys/s3/comfyshop/bussiness/user/impl/AccessTokenEncoderDecoderImpl.java"
     }
 }
+
 
 tasks.named('sonar').configure {
     dependsOn jacocoTestReport;

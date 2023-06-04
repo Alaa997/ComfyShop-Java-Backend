@@ -57,7 +57,7 @@
 //                .build();
 //
 //        CartItemDTO request = CartItemDTO.builder()
-//                .shoppingSession(shoppingSessionEntity)
+//                .sessionId(shoppingSessionEntity.getId())
 //                .product(productDTO)
 //                .quantity(2)
 //                .build();
@@ -66,7 +66,7 @@
 //        CartItemEntity existingCartItem = cartItemMapperMock.toEntity(request);
 //        existingCartItem.setQuantity(3);
 //
-//        when(cartItemRepositoryMock.findByShoppingSessionIdAndProductId(request.getShoppingSession().getId(),
+//        when(cartItemRepositoryMock.findByShoppingSessionIdAndProductId(request.getSessionId(),
 //                request.getProduct().getId())).thenReturn(Optional.of(existingCartItem));
 //        when(cartItemRepositoryMock.save(existingCartItem)).thenReturn(existingCartItem);
 //
@@ -76,7 +76,7 @@
 //        // Assert
 //        assertTrue(result);
 //        assertEquals(5, existingCartItem.getQuantity());
-//        verify(cartItemRepositoryMock).findByShoppingSessionIdAndProductId(request.getShoppingSession().getId(),
+//        verify(cartItemRepositoryMock).findByShoppingSessionIdAndProductId(request.getSessionId(),
 //                request.getProduct().getId());
 //        verify(cartItemRepositoryMock).save(existingCartItem);
 //        verifyNoMoreInteractions(cartItemRepositoryMock);
@@ -110,14 +110,14 @@
 //                .build();
 //
 //        CartItemDTO request = CartItemDTO.builder()
-//                .shoppingSession(shoppingSessionEntity)
+//                .sessionId(shoppingSessionEntity.getId())
 //                .product(productDTO)
 //                .quantity(2)
 //                .build();
 //
 //        CartItemEntity newCartItem = cartItemMapperMock.toEntity(request);
 //
-//        when(cartItemRepositoryMock.findByShoppingSessionIdAndProductId(request.getShoppingSession().getId(),
+//        when(cartItemRepositoryMock.findByShoppingSessionIdAndProductId(request.getSessionId(),
 //                request.getProduct().getId())).thenReturn(Optional.empty());
 //        when(cartItemMapperMock.toEntity(request)).thenReturn(newCartItem);
 //        when(cartItemRepositoryMock.save(newCartItem)).thenReturn(newCartItem);
@@ -127,7 +127,7 @@
 //
 //        // Assert
 //        assertTrue(result);
-//        verify(cartItemRepositoryMock).findByShoppingSessionIdAndProductId(request.getShoppingSession().getId(),
+//        verify(cartItemRepositoryMock).findByShoppingSessionIdAndProductId(request.getSessionId(),
 //                request.getProduct().getId());
 //        verify(cartItemMapperMock).toEntity(request);
 //        verify(cartItemRepositoryMock).save(newCartItem);

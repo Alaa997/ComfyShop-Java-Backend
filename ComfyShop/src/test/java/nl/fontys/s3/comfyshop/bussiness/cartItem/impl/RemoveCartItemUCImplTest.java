@@ -1,6 +1,5 @@
 package nl.fontys.s3.comfyshop.bussiness.cartItem.impl;
 
-import nl.fontys.s3.comfyshop.mappers.CartItemMapper;
 import nl.fontys.s3.comfyshop.persistence.CartItemRepository;
 import nl.fontys.s3.comfyshop.persistence.entity.shopping.CartItemEntity;
 import org.junit.jupiter.api.Test;
@@ -21,8 +20,6 @@ class RemoveCartItemUCImplTest {
     @Mock
     private CartItemRepository cartItemRepositoryMock;
 
-    @Mock
-    private CartItemMapper cartItemMapperMock;
     @InjectMocks
     private RemoveCartItemUCImpl removeCartItemUMock;
     @Test

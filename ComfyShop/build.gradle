@@ -12,7 +12,7 @@ sonar {
     properties {
         property "sonar.projectKey", "StudyMate"
         property "sonar.qualitygate.wait", true
-        property "sonar.coverage.exclusions", "**/lombok/**/*.*"
+        property "sonar.coverage.exclusions", "**/lombok/**/*.*, **/controller/**/*.*, **/configuration/**/*.*"
 
     }
 

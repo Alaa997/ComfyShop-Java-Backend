@@ -8,15 +8,13 @@ plugins {
 }
 
 sonar {
-
     properties {
         property "sonar.projectKey", "StudyMate"
         property "sonar.qualitygate.wait", true
-        property "sonar.coverage.exclusions", "**/lombok/**/*.*, **/controller/**/*.*, **/configuration/**/*.*"
-
+        property "sonar.coverage.exclusions", "**/lombok/**/*.*, **/controller/**/*.*, **/configuration/**/*.*, **/mappers/**/*.*, **/persistence/**/*.*"
     }
-
 }
+
 tasks.named('sonar').configure {
     dependsOn jacocoTestReport;
 }

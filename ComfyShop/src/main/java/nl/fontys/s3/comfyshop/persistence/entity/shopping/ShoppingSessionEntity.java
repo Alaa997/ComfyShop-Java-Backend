@@ -12,18 +12,19 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-//@ToString(exclude = "cartItems")
+@ToString(exclude =  "user")
 @Table(name = "shopping_session")
 public class ShoppingSessionEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private UserEntity user;
     @Builder.Default
-    @OneToMany(mappedBy = "shoppingSession", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//    @JsonIgnore
+    @OneToMany(mappedBy = "shoppingSession", cascade = CascadeType.ALL, fetch = FetchType.EAGER )
     private List<CartItemEntity> cartItems = new ArrayList<>();
     @Builder.Default
     private boolean ordered = false;

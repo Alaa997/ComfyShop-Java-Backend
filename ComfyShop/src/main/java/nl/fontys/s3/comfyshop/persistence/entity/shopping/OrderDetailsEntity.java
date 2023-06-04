@@ -1,9 +1,6 @@
 package nl.fontys.s3.comfyshop.persistence.entity.shopping;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import nl.fontys.s3.comfyshop.persistence.entity.UserEntity;
 
 import javax.persistence.*;
@@ -15,17 +12,17 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "order_details")
+@ToString(exclude = {"orderItems"})
 public class OrderDetailsEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private UserEntity user;
 
-    private Double total;
     @OneToMany(mappedBy = "orderDetails", cascade = CascadeType.ALL)
     private List<OrderItemsEntity> orderItems;
 }

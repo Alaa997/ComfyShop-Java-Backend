@@ -21,6 +21,7 @@ public class GetCartItemsUCImpl implements GetCartItemsUC {
     public List<CartItemDTO> getCartItems(Long sessionId) {
         List<CartItemEntity> cartItemEntities = cartItemRepository.findByShoppingSessionId(sessionId);
         List<CartItemDTO> cartItemDTOs = new ArrayList<>();
+
         for (CartItemEntity cartItemEntity : cartItemEntities) {
             CartItemDTO cartItemDTO = new CartItemDTO();
             cartItemDTO.setId(cartItemEntity.getId());

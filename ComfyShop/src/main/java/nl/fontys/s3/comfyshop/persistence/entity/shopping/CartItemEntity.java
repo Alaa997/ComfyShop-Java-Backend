@@ -16,7 +16,6 @@ public class CartItemEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-//    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "session_id")
     private ShoppingSessionEntity shoppingSession;

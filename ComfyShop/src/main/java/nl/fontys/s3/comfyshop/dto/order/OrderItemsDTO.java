@@ -6,6 +6,6 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class OrderItemDTO {
+public class OrderItemsDTO {
     private Long id;
 }

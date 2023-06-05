@@ -25,7 +25,6 @@ public class GetCartItemsUCImpl implements GetCartItemsUC {
         for (CartItemEntity cartItemEntity : cartItemEntities) {
             CartItemDTO cartItemDTO = new CartItemDTO();
             cartItemDTO.setId(cartItemEntity.getId());
-//            cartItemDTO.setShoppingSession(ShoppingSessionMapper.toDTO(cartItemEntity.getShoppingSession()));
             cartItemDTO.setProduct(ProductMapper.mapperToDTO(cartItemEntity.getProduct()));
             cartItemDTO.setQuantity(cartItemEntity.getQuantity());
 

@@ -2,7 +2,6 @@ package nl.fontys.s3.comfyshop.persistence.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-import nl.fontys.s3.comfyshop.persistence.entity.shopping.OrderDetailsEntity;
 import nl.fontys.s3.comfyshop.persistence.entity.shopping.ShoppingSessionEntity;
 
 import javax.persistence.*;

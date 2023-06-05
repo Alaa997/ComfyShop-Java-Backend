@@ -6,7 +6,7 @@ import nl.fontys.s3.comfyshop.persistence.CartItemRepository;
 import nl.fontys.s3.comfyshop.persistence.entity.shopping.CartItemEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import javax.persistence.EntityNotFoundException;
 
 @Service
 @AllArgsConstructor
@@ -14,19 +14,12 @@ public class RemoveCartItemUCImpl implements RemoveCartItemUC {
     private final CartItemRepository cartItemRepository;
     @Override
     public boolean removeCartItem(Long id) {
-        Optional<CartItemEntity> cartItemOptional = cartItemRepository.findById(id);
-
-        if (cartItemOptional.isPresent()) {
-//            CartItemEntity cartItem = cartItemOptional.get();
-          try
-          {
-              cartItemRepository.delete(cartItemOptional.get());
-          }
-          catch (Exception e) {
-          System.out.println(e.getMessage());
-          }
+        try {
+            CartItemEntity cartItem = cartItemRepository.getById(id);
+            cartItemRepository.delete(cartItem);
             return true;
+        } catch (EntityNotFoundException e) {
+            return false;
         }
-        return false;
     }
 }

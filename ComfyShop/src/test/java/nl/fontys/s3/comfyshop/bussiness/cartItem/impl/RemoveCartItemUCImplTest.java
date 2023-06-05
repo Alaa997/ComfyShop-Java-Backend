@@ -4,16 +4,16 @@ import nl.fontys.s3.comfyshop.persistence.CartItemRepository;
 import nl.fontys.s3.comfyshop.persistence.entity.shopping.CartItemEntity;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Captor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.Optional;
+import javax.persistence.EntityNotFoundException;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.mockito.ArgumentMatchers.anyLong;
-import static org.mockito.Mockito.when;
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class RemoveCartItemUCImplTest {
@@ -21,31 +21,42 @@ class RemoveCartItemUCImplTest {
     private CartItemRepository cartItemRepositoryMock;
 
     @InjectMocks
-    private RemoveCartItemUCImpl removeCartItemUMock;
+    private RemoveCartItemUCImpl removeCartItemUC;
+    @Captor
+    private ArgumentCaptor<CartItemEntity> cartItemCaptor;
+
     @Test
-    public void removeCartItem_ExistingCartItem_ShouldReturnTrue() {
+    void removeCartItem_ExistingItem_ShouldReturnTrue() {
         // Arrange
         Long cartItemId = 1L;
-        CartItemEntity cartItemEntity = new CartItemEntity();
-        when(cartItemRepositoryMock.findById(anyLong())).thenReturn(Optional.of(cartItemEntity));
+        CartItemEntity cartItem = new CartItemEntity();
+        cartItem.setId(cartItemId);
+
+        when(cartItemRepositoryMock.getById(cartItemId)).thenReturn(cartItem);
 
         // Act
-        boolean result = removeCartItemUMock.removeCartItem(cartItemId);
+        boolean removed = removeCartItemUC.removeCartItem(cartItemId);
 
         // Assert
-        assertTrue(result);
+        assertTrue(removed);
+        verify(cartItemRepositoryMock).getById(cartItemId);
+        verify(cartItemRepositoryMock).delete(cartItemCaptor.capture());
+        assertEquals(cartItem, cartItemCaptor.getValue());
     }
 
     @Test
-    public void removeCartItem_NonExistingCartItem_ShouldReturnFalse() {
+    void removeCartItem_NonExistingItem_ShouldReturnFalse() {
         // Arrange
         Long cartItemId = 1L;
-        when(cartItemRepositoryMock.findById(anyLong())).thenReturn(Optional.empty());
+
+        when(cartItemRepositoryMock.getById(cartItemId)).thenThrow(EntityNotFoundException.class);
 
         // Act
-        boolean result = removeCartItemUMock.removeCartItem(cartItemId);
+        boolean removed = removeCartItemUC.removeCartItem(cartItemId);
 
         // Assert
-        assertFalse(result);
+        assertFalse(removed);
+        verify(cartItemRepositoryMock).getById(cartItemId);
+        verify(cartItemRepositoryMock, never()).delete(any(CartItemEntity.class));
     }
 }

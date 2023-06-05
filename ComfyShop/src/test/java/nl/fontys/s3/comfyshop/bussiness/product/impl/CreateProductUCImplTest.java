@@ -21,7 +21,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
-import static org.mockito.Mockito.never;
+
 @ExtendWith(MockitoExtension.class)
 class CreateProductUCImplTest {
 
@@ -47,12 +47,12 @@ class CreateProductUCImplTest {
                 .category(categoryDTO)
                 .build();
 
-        CategoryEntity categoryEntity = categoryMapperMock.mapperToEntity(categoryDTO);
+        CategoryEntity categoryEntity = CategoryMapper.mapperToEntity(categoryDTO);
 
         when(productRepositoryMock.existsByName(request.getName())).thenReturn(false);
         when(categoryRepositoryMock.findById(request.getCategory().getId())).thenReturn(Optional.of(categoryEntity));
 
-        ProductEntity productEntity = productMapperMock.mapperToEntity(request);
+        ProductEntity productEntity = ProductMapper.mapperToEntity(request);
         when(productRepositoryMock.save(any(ProductEntity.class))).thenReturn(productEntity);
 
         // Act
@@ -80,7 +80,7 @@ class CreateProductUCImplTest {
         // Act and Assert
         assertThrows(NameAlreadyExistsException.class, () -> createProductUC.createProduct(request));
         verify(categoryRepositoryMock, never()).findById(request.getCategory().getId());
-        verify(productRepositoryMock, never()).save(productMapperMock.mapperToEntity(request));
+        verify(productRepositoryMock, never()).save(ProductMapper.mapperToEntity(request));
     }
 
     @Test
@@ -100,6 +100,6 @@ class CreateProductUCImplTest {
         // Act and Assert
         assertThrows(InvalidCategoryException.class, () -> createProductUC.createProduct(request));
         verify(productRepositoryMock, times(1)).existsByName(request.getName());
-        verify(productRepositoryMock, never()).save(productMapperMock.mapperToEntity(request));
+        verify(productRepositoryMock, never()).save(ProductMapper.mapperToEntity(request));
     }
 }

@@ -29,6 +29,7 @@ class CreateCategoryUCImplTest {
 
         CategoryEntity savedCategoryEntity = CategoryEntity.builder().id(1L).name(categoryDTO.getName()).build();
         CategoryEntity expectedNewCategory = CategoryEntity.builder().name("Meat").build();
+
         when(categoryRepositoryMock.save(expectedNewCategory)).thenReturn(savedCategoryEntity);
         // Act
         CategoryDTO createdCategoryDTO = createCategoryUC.createCategory(categoryDTO);

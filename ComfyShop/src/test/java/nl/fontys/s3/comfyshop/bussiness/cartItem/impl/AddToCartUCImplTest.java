@@ -24,11 +24,8 @@
 //class AddToCartUCImplTest {
 //    @Mock
 //    private CartItemRepository cartItemRepositoryMock;
-//
-//    @Mock
-//    private CartItemMapper cartItemMapperMock;
 //    @InjectMocks
-//    private AddToCartUCImpl addToCartUCMock;
+//    private AddToCartUCImpl addToCartUC;
 //
 //    @Test
 //    void addToCart_ExistingCartItem_ShouldUpdateQuantityAndReturnTrue() {
@@ -63,7 +60,7 @@
 //                .build();
 //
 //
-//        CartItemEntity existingCartItem = cartItemMapperMock.toEntity(request);
+//        CartItemEntity existingCartItem = CartItemMapper.toEntity(request);
 //        existingCartItem.setQuantity(3);
 //
 //        when(cartItemRepositoryMock.findByShoppingSessionIdAndProductId(request.getSessionId(),
@@ -71,7 +68,7 @@
 //        when(cartItemRepositoryMock.save(existingCartItem)).thenReturn(existingCartItem);
 //
 //        // Act
-//        boolean result = addToCartUCMock.addToCart(request);
+//        boolean result = addToCartUC.addToCart(request);
 //
 //        // Assert
 //        assertTrue(result);
@@ -80,7 +77,6 @@
 //                request.getProduct().getId());
 //        verify(cartItemRepositoryMock).save(existingCartItem);
 //        verifyNoMoreInteractions(cartItemRepositoryMock);
-//        verifyNoInteractions(cartItemMapperMock);
 //    }
 //
 //    @Test
@@ -115,24 +111,21 @@
 //                .quantity(2)
 //                .build();
 //
-//        CartItemEntity newCartItem = cartItemMapperMock.toEntity(request);
+//        CartItemEntity newCartItem = CartItemMapper.toEntity(request);
 //
 //        when(cartItemRepositoryMock.findByShoppingSessionIdAndProductId(request.getSessionId(),
 //                request.getProduct().getId())).thenReturn(Optional.empty());
-//        when(cartItemMapperMock.toEntity(request)).thenReturn(newCartItem);
 //        when(cartItemRepositoryMock.save(newCartItem)).thenReturn(newCartItem);
 //
 //        // Act
-//        boolean result = addToCartUCMock.addToCart(request);
+//        boolean result = addToCartUC.addToCart(request);
 //
 //        // Assert
 //        assertTrue(result);
 //        verify(cartItemRepositoryMock).findByShoppingSessionIdAndProductId(request.getSessionId(),
 //                request.getProduct().getId());
-//        verify(cartItemMapperMock).toEntity(request);
 //        verify(cartItemRepositoryMock).save(newCartItem);
 //        verifyNoMoreInteractions(cartItemRepositoryMock);
-//        verifyNoMoreInteractions(cartItemMapperMock);
 //    }
 //
 //}

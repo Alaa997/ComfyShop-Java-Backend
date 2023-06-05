@@ -5,15 +5,13 @@ import lombok.*;
 import nl.fontys.s3.comfyshop.persistence.entity.shopping.ShoppingSessionEntity;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(exclude = {"orders", "shoppingSession"})
+@ToString(exclude = "shoppingSession")
 @Table(name = "user")
 public class UserEntity {
     @Id
@@ -32,9 +30,4 @@ public class UserEntity {
 
     @OneToOne(mappedBy = "user", fetch = FetchType.EAGER)
     private ShoppingSessionEntity shoppingSession;
-    @JsonIgnore
-    @Builder.Default
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<OrderDetailsEntity> orders = new ArrayList<>();
-
 }

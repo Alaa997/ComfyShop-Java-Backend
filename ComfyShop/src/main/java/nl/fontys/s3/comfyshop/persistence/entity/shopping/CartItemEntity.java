@@ -20,7 +20,7 @@ public class CartItemEntity {
     @JoinColumn(name = "session_id")
     private ShoppingSessionEntity shoppingSession;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "product_id")
     private ProductEntity product;
 

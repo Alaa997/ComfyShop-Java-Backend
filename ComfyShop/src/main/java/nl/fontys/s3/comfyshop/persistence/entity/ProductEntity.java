@@ -1,18 +1,20 @@
 package nl.fontys.s3.comfyshop.persistence.entity;
 
 import lombok.*;
+import nl.fontys.s3.comfyshop.persistence.entity.shopping.CartItemEntity;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
 @Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString(exclude = "category")
+@ToString(exclude = {"category", "cartItems"})
 @Table(name = "product")
 public class ProductEntity {
     @Id
@@ -31,4 +33,7 @@ public class ProductEntity {
     @ManyToOne
     @JoinColumn(name = "category_id")
     private CategoryEntity category;
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    private List<CartItemEntity> cartItems;
 }

@@ -37,7 +37,7 @@ public class CartItemController {
         return ResponseEntity.ok(cartItems);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("{id}")
     public ResponseEntity<?> removeCartItem(@PathVariable("id") Long id) {
         boolean removed = removeCartItemUC.removeCartItem(id);
         if (removed) {

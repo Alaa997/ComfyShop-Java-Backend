@@ -37,12 +37,12 @@ public class AccessTokenEncoderDecoderImpl implements AccessTokenEncoder, Access
         if (!CollectionUtils.isEmpty(accessToken.getRoles())) {
             claimsMap.put("roles", accessToken.getRoles());
         }
-        if (accessToken.getUserId() != null) {
-            claimsMap.put("userId", accessToken.getUserId());
+        if (accessToken.getId() != null) {
+            claimsMap.put("userId", accessToken.getId());
         }
-        if (accessToken.getShoppingSessionId() != null) {
-            claimsMap.put("shoppingSessionId", accessToken.getShoppingSessionId());
-        }
+//        if (accessToken.getShoppingSessionId() != null) {
+//            claimsMap.put("shoppingSessionId", accessToken.getShoppingSessionId());
+//        }
         Instant now = Instant.now();
         return Jwts.builder()
                 .setSubject(accessToken.getSubject())
@@ -86,7 +86,7 @@ public class AccessTokenEncoderDecoderImpl implements AccessTokenEncoder, Access
             return AccessToken.builder()
                     .subject(claims.getSubject())
                     .roles(roles)
-                    .userId(claims.get("userId", Long.class))
+                    .id(claims.get("userId", Long.class))
                     .build();
         } catch (JwtException e) {
             throw new InvalidAccessTokenException(e.getMessage());

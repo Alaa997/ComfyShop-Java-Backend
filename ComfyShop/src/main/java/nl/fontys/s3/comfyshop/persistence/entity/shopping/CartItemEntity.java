@@ -9,8 +9,8 @@ import javax.persistence.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "cart_item")
 @ToString(exclude = {"shoppingSession"})
+@Table(name = "cart_item")
 public class CartItemEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

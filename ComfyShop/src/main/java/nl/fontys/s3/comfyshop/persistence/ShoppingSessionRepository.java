@@ -19,7 +19,9 @@ public interface ShoppingSessionRepository extends JpaRepository<ShoppingSession
 //    List<ShoppingSessionEntity> getByUserShoppingSessionsAndCartItemsAndOrderedTrue(UserEntity user);
 //    @Query("SELECT ss FROM ShoppingSessionEntity ss WHERE ss.user = :user AND ss.ordered = true")
 //    List<ShoppingSessionEntity> getByUserAndOrderedTrue(UserEntity user);
-
+    @Query("SELECT ss.id FROM ShoppingSessionEntity ss WHERE ss.user.id = :userId AND ss.ordered = false")
+    Long findShoppingSessionIdByUserIdAndNotOrdered(@Param("userId") Long userId);
+//    Long findShoppingSessionIdByUserIdAndOrderedFalse(@Param("userId") Long userId);
     @Query("SELECT ss FROM ShoppingSessionEntity ss WHERE ss.user = :user AND ss.ordered = true ORDER BY ss.id DESC")
     List<ShoppingSessionEntity> getByUserAndOrderedTrueOrderedByIdDesc(UserEntity user);
 

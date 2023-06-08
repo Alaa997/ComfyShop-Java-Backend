@@ -18,7 +18,7 @@ public class NotificationsController {
 
     @PostMapping
     public ResponseEntity<Void> sendNotificationToUsers(@RequestBody NotificationMessage message) {
-        messagingTemplate.convertAndSend("/topic/publicmessages", message);
+        messagingTemplate.convertAndSend("/topic/notifications", message);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 }

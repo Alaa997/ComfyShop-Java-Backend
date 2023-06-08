@@ -30,6 +30,7 @@ public class GetOrdersUCImpl implements GetOrdersUC {
             orderDTO.setId(order.getId());
             orderDTO.setCartItems(CartItemMapper.toDTOList(order.getCartItems()));
             orderDTO.setOrdered(order.isOrdered());
+            orderDTO.setTotal(shoppingRepository.getTotalPriceByShoppingSessionId(order.getId()));
             ordersDTOs.add(orderDTO);
         }
         return ordersDTOs;

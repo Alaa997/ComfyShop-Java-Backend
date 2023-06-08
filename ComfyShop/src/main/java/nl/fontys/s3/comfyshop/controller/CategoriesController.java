@@ -48,8 +48,6 @@ public class CategoriesController {
         return ResponseEntity.noContent().build();
     }
 
-    //    @IsAuthenticated
-//    @RolesAllowed({"ROLE_ADMIN"})
     @IsAuthenticated
     @RolesAllowed({"ROLE_ADMIN"})
     @DeleteMapping("/{id}")

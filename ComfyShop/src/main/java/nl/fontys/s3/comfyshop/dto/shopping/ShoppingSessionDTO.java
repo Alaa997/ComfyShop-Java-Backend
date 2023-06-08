@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import nl.fontys.s3.comfyshop.dto.user.UserDTO;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,4 +20,5 @@ public class ShoppingSessionDTO {
     @Builder.Default
     private List<CartItemDTO> cartItems = new ArrayList<>();
     private boolean ordered;
+    private BigDecimal total;
 }

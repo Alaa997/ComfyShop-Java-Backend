@@ -2,13 +2,11 @@ package nl.fontys.s3.comfyshop.controller;
 
 import lombok.RequiredArgsConstructor;
 import nl.fontys.s3.comfyshop.bussiness.product.*;
-import nl.fontys.s3.comfyshop.configuration.security.isauthenticated.IsAuthenticated;
 import nl.fontys.s3.comfyshop.dto.ProductDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
@@ -25,11 +23,6 @@ public class ProductsController {
     private final GetAllProductsUC getAllProductsUC;
     private final DeleteProductUC deleteProductUC;
 
-    //    @GetMapping("/product")
-//    public ResponseEntity<ProductDTO> getProduct(@RequestParam(value = "id", required = false) Long id) {
-//        final Optional<ProductDTO> productOptional = getProductUC.getProduct(id);
-//        return productOptional.map(productDTO -> ResponseEntity.ok().body(productDTO)).orElseGet(() -> ResponseEntity.notFound().build());
-//    }
     @GetMapping("/{id}")
     public ResponseEntity<ProductDTO> getProduct(@PathVariable Long id) {
         if (id != null) {
@@ -50,8 +43,8 @@ public class ProductsController {
         return ResponseEntity.ok(products);
     }
 
-    @IsAuthenticated
-    @RolesAllowed({"ROLE_ADMIN"})
+//    @IsAuthenticated
+//    @RolesAllowed({"ROLE_ADMIN"})
     @PostMapping()
     public ResponseEntity<ProductDTO> createProduct(@RequestBody @Valid ProductDTO request) {
         ProductDTO response = createProductUC.createProduct(request);

@@ -30,9 +30,7 @@ public class LoginUCImpl implements LoginUC {
     @Override
     public LoginResponse login(LoginRequest loginRequest) {
         UserEntity user = userRepository.findByEmail(loginRequest.getEmail());
-//        if (user == null) {
-//            throw new InvalidCredentialsException();
-//        }
+
         if (!matchesPassword(loginRequest.getPassword(), user.getPassword())){
             throw new InvalidCredentialsException();
         }

@@ -23,7 +23,6 @@
 //import static org.junit.Assert.assertTrue;
 //import static org.junit.jupiter.api.Assertions.assertNotNull;
 //import static org.mockito.Mockito.*;
-//
 //@ExtendWith(MockitoExtension.class)
 //class GetCartItemsUCImplTest {
 //    @Mock
@@ -31,8 +30,10 @@
 //
 //    @Mock
 //    private CartItemMapper cartItemMapperMock;
+//
 //    @InjectMocks
 //    private GetCartItemsUCImpl getCartItemsUC;
+//
 //    @Test
 //    void getCartItems_ExistingCartItems_ShouldReturnCartItemDTOList() {
 //        // Arrange
@@ -115,7 +116,6 @@
 //        verifyNoMoreInteractions(cartItemMapperMock);
 //    }
 //
-//
 //    @Test
 //    void getCartItems_NoCartItems_ShouldReturnEmptyList() {
 //        // Arrange
@@ -134,3 +134,4 @@
 //        verifyNoInteractions(cartItemMapperMock);
 //    }
 //}
+//

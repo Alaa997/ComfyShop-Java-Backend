@@ -20,7 +20,8 @@ public class AddToCartUCImpl implements AddToCartUC {
 
     @Override
     public boolean addToCart(CartItemDTO request) {
-        Optional<CartItemEntity> existingCartItemOptional = cartItemRepository.findByShoppingSessionIdAndProductId(
+        Optional<CartItemEntity> existingCartItemOptional =
+                cartItemRepository.findByShoppingSessionIdAndProductId(
                 request.getSessionId(), request.getProduct().getId());
 
         if (existingCartItemOptional.isPresent()) {

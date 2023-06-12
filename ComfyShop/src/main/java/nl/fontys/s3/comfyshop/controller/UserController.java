@@ -6,6 +6,7 @@ import nl.fontys.s3.comfyshop.bussiness.exception.EmailAlreadyExistsException;
 import nl.fontys.s3.comfyshop.bussiness.user.CreateUserUC;
 import nl.fontys.s3.comfyshop.bussiness.user.GetCurrentUserUC;
 import nl.fontys.s3.comfyshop.bussiness.user.LoginUC;
+import nl.fontys.s3.comfyshop.configuration.security.isauthenticated.IsAuthenticated;
 import nl.fontys.s3.comfyshop.dto.user.LoginRequest;
 import nl.fontys.s3.comfyshop.dto.user.LoginResponse;
 import nl.fontys.s3.comfyshop.dto.user.UserDTO;
@@ -13,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 
 @CrossOrigin(origins = "http://localhost:3000")
@@ -41,7 +43,8 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body(loginResponse);
     }
 
-
+    @IsAuthenticated
+    @RolesAllowed({"ROLE_CUSTOMER", "ROLE_ADMIN"})
     @GetMapping("/{email}")
     public ResponseEntity<UserDTO> getCurrentUser(@PathVariable String email) {
         UserDTO userDTO = getCurrentUserUC.getCurrentUser(email);

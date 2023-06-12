@@ -19,7 +19,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/categories")
 @AllArgsConstructor
-//@IsAuthenticated
 public class CategoriesController {
     private final CreateCategoryUC createCategoryUC;
     private final UpdateCategoryUC updateCategoryUC;

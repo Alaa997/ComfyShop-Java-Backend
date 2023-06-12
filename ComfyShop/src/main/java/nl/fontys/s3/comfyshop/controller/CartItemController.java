@@ -5,17 +5,20 @@ import nl.fontys.s3.comfyshop.bussiness.cartItem.AddToCartUC;
 import nl.fontys.s3.comfyshop.bussiness.cartItem.GetCartItemsUC;
 import nl.fontys.s3.comfyshop.bussiness.cartItem.RemoveCartItemUC;
 import nl.fontys.s3.comfyshop.bussiness.cartItem.UpdateCartItemUC;
+import nl.fontys.s3.comfyshop.configuration.security.isauthenticated.IsAuthenticated;
 import nl.fontys.s3.comfyshop.dto.shopping.CartItemDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
-//@IsAuthenticated
-//@RolesAllowed({"ROLE_CUSTOMER"})
+
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/cart")
 @AllArgsConstructor
+@IsAuthenticated
+@RolesAllowed({"ROLE_CUSTOMER"})
 public class CartItemController {
     private final AddToCartUC addToCartUC;
     private final GetCartItemsUC getCartItemsUC;

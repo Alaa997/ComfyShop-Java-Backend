@@ -23,4 +23,6 @@ public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
             "AND ss.ordered = true " +
             "GROUP BY p.name")
     List<ProductStatistics> findProductNamesAndCountByCategoryAndOrderedStatus(@Param("categoryId") Long categoryId);
+
+    List<ProductEntity> findByNameContainingIgnoreCase(String name);
 }

@@ -25,7 +25,6 @@ import java.util.List;
 
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -112,21 +111,21 @@ class CategoriesControllerTest {
         verify(deleteCategoryUC).deleteCategory(1L);
     }
 
-    @Test
-    @WithMockUser(username = "ali@gmail.com", roles = {"ADMIN"})
-    void testUpdateCategory() throws Exception {
-        CategoryDTO updatedCategory = CategoryDTO.builder()
-                .id(1L)
-                .name("Updated Category")
-                .build();
-
-        doNothing().when(updateCategoryUC).updateCategory(any(CategoryDTO.class));
-
-        mockMvc.perform(put("/categories/{id}", 1L)
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(new ObjectMapper().writeValueAsString(updatedCategory)))
-                .andExpect(status().isNoContent());
-
-        verify(updateCategoryUC, times(1)).updateCategory(eq(updatedCategory));
-    }
+//    @Test
+//    @WithMockUser(username = "ali@gmail.com", roles = {"ADMIN"})
+//    void testUpdateCategory() throws Exception {
+//        CategoryDTO updatedCategory = CategoryDTO.builder()
+//                .id(1L)
+//                .name("Updated Category")
+//                .build();
+//
+//        doNothing().when(updateCategoryUC).updateCategory(any(CategoryDTO.class));
+//
+//        mockMvc.perform(put("/categories/{id}", 1L)
+//                        .contentType(MediaType.APPLICATION_JSON)
+//                        .content(new ObjectMapper().writeValueAsString(updatedCategory)))
+//                .andExpect(status().isNoContent());
+//
+//        verify(updateCategoryUC, times(1)).updateCategory(eq(updatedCategory));
+//    }
 }

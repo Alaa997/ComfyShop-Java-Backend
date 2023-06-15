@@ -2,19 +2,17 @@ package nl.fontys.s3.comfyshop.controller;
 
 import lombok.RequiredArgsConstructor;
 import nl.fontys.s3.comfyshop.bussiness.product.GetStatisticsUC;
-import nl.fontys.s3.comfyshop.configuration.security.isauthenticated.IsAuthenticated;
 import nl.fontys.s3.comfyshop.dto.ProductStatistics;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.security.RolesAllowed;
 import java.util.List;
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/statistics")
 @RequiredArgsConstructor
-@IsAuthenticated
-@RolesAllowed({"ROLE_ADMIN"})
+//@IsAuthenticated
+//@RolesAllowed({"ROLE_ADMIN"})
 public class StatisticsController {
     private final GetStatisticsUC getStatisticsUC;
     @GetMapping("/{categoryId}")

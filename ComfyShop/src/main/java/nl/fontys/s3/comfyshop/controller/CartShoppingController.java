@@ -5,7 +5,6 @@ import nl.fontys.s3.comfyshop.bussiness.exception.InvalidShoppingCartException;
 import nl.fontys.s3.comfyshop.bussiness.shoppingCart.GetOrdersUC;
 import nl.fontys.s3.comfyshop.bussiness.shoppingCart.GetSessionIdUC;
 import nl.fontys.s3.comfyshop.bussiness.shoppingCart.UpdateShoppingSessionUC;
-import nl.fontys.s3.comfyshop.configuration.security.isauthenticated.IsAuthenticated;
 import nl.fontys.s3.comfyshop.dto.shopping.ShoppingSessionDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +17,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/shopping_session")
 @AllArgsConstructor
-@IsAuthenticated
 @RolesAllowed({"ROLE_CUSTOMER"})
 public class CartShoppingController {
 
@@ -31,6 +29,8 @@ public class CartShoppingController {
         Long sessionId = getShoppingSession.GetSessionId(userId);
         return ResponseEntity.ok(sessionId);
     }
+
+//@PreAuthorize("hasRole('ROLE_CUSTOMER')")
     @PutMapping("/{shoppingSessionId}/{userId}") // Place order by changing status ordered to true
     public ResponseEntity<String> updateShoppingSession(@PathVariable Long shoppingSessionId, @PathVariable Long userId) {
         try {

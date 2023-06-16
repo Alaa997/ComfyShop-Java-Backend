@@ -26,6 +26,7 @@ import java.util.List;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ExtendWith(SpringExtension.class)
@@ -61,8 +62,8 @@ class CategoriesControllerTest {
 
         mockMvc.perform(MockMvcRequestBuilders.get("/categories"))
                 .andExpect(status().isOk())
-                .andExpect(org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath("$[0].name").value("Pants"))
-                .andExpect(org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath("$[1].name").value("Skirt"));
+                .andExpect(jsonPath("$[0].name").value("Pants"))
+                .andExpect(jsonPath("$[1].name").value("Skirt"));
 
         verify(getCategoriesUC).getCategories();
     }
@@ -86,8 +87,8 @@ class CategoriesControllerTest {
                         .content(new ObjectMapper().writeValueAsString(request)))
                 .andDo(print())
                 .andExpect(status().isCreated())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(1L))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.name").value("Pants"));
+                .andExpect(jsonPath("$.id").value(1L))
+                .andExpect(jsonPath("$.name").value("Pants"));
 
     }
 

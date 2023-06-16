@@ -10,14 +10,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/shopping_session")
 @AllArgsConstructor
-@RolesAllowed({"ROLE_CUSTOMER"})
+//@RolesAllowed({"ROLE_CUSTOMER"})
 public class CartShoppingController {
 
     private final UpdateShoppingSessionUC updateShoppingSessionUC;
@@ -30,8 +29,10 @@ public class CartShoppingController {
         return ResponseEntity.ok(sessionId);
     }
 
-//@PreAuthorize("hasRole('ROLE_CUSTOMER')")
-    @PutMapping("/{shoppingSessionId}/{userId}") // Place order by changing status ordered to true
+    //@PreAuthorize("hasRole('ROLE_CUSTOMER')")
+//    @IsAuthenticated
+    @PutMapping("{shoppingSessionId}/{userId}") // Place order by changing status ordered to true
+//    @RolesAllowed({"ROLE_CUSTOMER"})
     public ResponseEntity<String> updateShoppingSession(@PathVariable Long shoppingSessionId, @PathVariable Long userId) {
         try {
             boolean updated = updateShoppingSessionUC.UpdateShoppingSession(shoppingSessionId, userId);

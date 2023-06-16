@@ -7,6 +7,8 @@ import nl.fontys.s3.comfyshop.dto.ProductDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
@@ -53,10 +55,17 @@ public class ProductsController {
         return ResponseEntity.ok(products);
     }
 
+//    @IsAuthenticated
+//    @RolesAllowed({"ROLE_ADMIN"})
+//    @PostMapping()
+//    public ResponseEntity<ProductDTO> createProduct(@RequestBody @Valid ProductDTO request) {
+//        ProductDTO response = createProductUC.createProduct(request);
+//        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+//    }
     @IsAuthenticated
     @RolesAllowed({"ROLE_ADMIN"})
     @PostMapping()
-    public ResponseEntity<ProductDTO> createProduct(@RequestBody @Valid ProductDTO request) {
+    public ResponseEntity<ProductDTO> createProduct(MultipartHttpServletRequest request) {
         ProductDTO response = createProductUC.createProduct(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }

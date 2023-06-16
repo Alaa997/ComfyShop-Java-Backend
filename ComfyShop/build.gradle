@@ -17,7 +17,7 @@ sonar {
 
 
 tasks.named('sonar').configure {
-    dependsOn jacocoTestReport;
+    dependsOn jacocoTestReport
 }
 test {
     jacoco {
@@ -73,6 +73,8 @@ dependencies {
 
     implementation 'org.springframework.boot:spring-boot-starter-websocket'
 
+    implementation 'com.cloudinary:cloudinary-http44:1.27.0'
+
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
@@ -82,6 +84,9 @@ dependencies {
     testImplementation 'org.springframework.security:spring-security-test'
     implementation 'org.hibernate:hibernate-core:5.6.1.Final'
     implementation 'org.hibernate:hibernate-gradle-plugin:5.6.1.Final'
+
+    implementation 'com.cloudinary:cloudinary-http44:1.33.0'
+    implementation 'commons-fileupload:commons-fileupload:1.5'
 }
 
 //tasks.named('test') {

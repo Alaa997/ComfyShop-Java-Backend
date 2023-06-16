@@ -37,4 +37,5 @@ public class ProductEntity {
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private List<CartItemEntity> cartItems;
     private String photo;
+    private int quantity;
 }

@@ -7,9 +7,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import javax.persistence.EntityNotFoundException;
+
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class RemoveCartItemUCImplTest {
@@ -32,19 +33,16 @@ class RemoveCartItemUCImplTest {
         verify(cartItemRepositoryMock, times(1)).deleteById(id);
     }
 
-//    @Test
-//    void removeCartItem_NonExistingItem_ShouldReturnFalse() {
-//        // Arrange
-//        Long cartItemId = 1L;
-//
-//        when(cartItemRepositoryMock.getById(cartItemId)).thenThrow(EntityNotFoundException.class);
-//
-//        // Act
-//        boolean removed = removeCartItemUC.removeCartItem(cartItemId);
-//
-//        // Assert
-//        assertFalse(removed);
-//        verify(cartItemRepositoryMock).getById(cartItemId);
-//        verify(cartItemRepositoryMock, never()).delete(any(CartItemEntity.class));
-//    }
+    @Test
+    void removeCartItem_ItemDoesNotExist_ReturnsFalse() {
+        // Arrange
+        Long cartItemId = 1L;
+        doThrow(EntityNotFoundException.class).when(cartItemRepositoryMock).deleteById(cartItemId);
+        // Act
+        boolean result = removeCartItemUC.removeCartItem(cartItemId);
+
+        // Assert
+        assertFalse(result);
+        verify(cartItemRepositoryMock, times(1)).deleteById(cartItemId);
+    }
 }

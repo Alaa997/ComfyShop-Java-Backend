@@ -1,1 +1,2 @@
 https://git.fhict.nl/I451473/comfyshop.git
+https://git.fhict.nl/I451473/comfyshopreact.git

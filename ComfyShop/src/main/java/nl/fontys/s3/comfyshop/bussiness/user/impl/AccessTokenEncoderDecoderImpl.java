@@ -40,9 +40,7 @@ public class AccessTokenEncoderDecoderImpl implements AccessTokenEncoder, Access
         if (accessToken.getId() != null) {
             claimsMap.put("userId", accessToken.getId());
         }
-//        if (accessToken.getShoppingSessionId() != null) {
-//            claimsMap.put("shoppingSessionId", accessToken.getShoppingSessionId());
-//        }
+
         Instant now = Instant.now();
         return Jwts.builder()
                 .setSubject(accessToken.getSubject())
@@ -53,24 +51,6 @@ public class AccessTokenEncoderDecoderImpl implements AccessTokenEncoder, Access
                 .compact();
     }
 
-    //    @Override
-//    public AccessToken decode(String accessTokenEncoded) {
-//        try {
-//            Jwt jwt = Jwts.parserBuilder().setSigningKey(key).build().parse(accessTokenEncoded);
-//            Claims claims = (Claims) jwt.getBody();
-//
-//            List<String> roles = claims.get("roles", List.class);
-//
-//            return AccessToken.builder()
-//                    .subject(claims.getSubject())
-//                    .roles(roles)
-//                    .userId(claims.get("userId", Long.class))
-//                    .shoppingSessionId(claims.get("shoppingSessionId", Long.class))
-//                    .build();
-//        } catch (JwtException e) {
-//            throw new InvalidAccessTokenException(e.getMessage());
-//        }
-//    }
     @Override
     public AccessToken decode(String accessTokenEncoded) {
         try {

@@ -7,7 +7,6 @@ import org.modelmapper.ModelMapper;
 import java.util.List;
 
 public class CartItemMapper {
-    public CartItemMapper() {}
 
     public static CartItemDTO toDTO(CartItemEntity cartItemEntity) {
         ModelMapper modelMapper = new ModelMapper();

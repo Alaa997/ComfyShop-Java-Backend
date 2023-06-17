@@ -20,29 +20,34 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import java.util.Optional;
+
 @Service
 @AllArgsConstructor
 public class CreateProductUCImpl implements CreateProductUC {
     private final ProductRepository productRepository;
     private final CategoryRepository categoryRepository;
     private final CloudinaryRepo cloudinaryRepo;
+
     @Override
     public ProductDTO createProduct(MultipartHttpServletRequest request) {
+        ProductDTO productDTO = extractProductDTO(request);
+        handleFileUpload(productDTO, request);
+        validateProductDTO(productDTO);
+        CategoryEntity categoryEntity = getCategoryEntity(productDTO);
+        ProductEntity savedProduct = saveProduct(productDTO, categoryEntity);
+        return ProductMapper.mapperToDTO(savedProduct);
+    }
+
+    private ProductDTO extractProductDTO(MultipartHttpServletRequest request) {
         ProductDTO productDTO = new ProductDTO();
+        productDTO.setName(request.getParameter("name"));
+        productDTO.setDescription(request.getParameter("description"));
+        productDTO.setPrice(Double.parseDouble(request.getParameter("price")));
+        extractCategoryFromJson(productDTO, request.getParameter("category"));
+        return productDTO;
+    }
 
-        // Extract form data
-        String name = request.getParameter("name");
-        String description = request.getParameter("description");
-        String price = request.getParameter("price");
-        String categoryJson = request.getParameter("category");
-        MultipartFile photo = request.getFile("photo");
-
-        // Set the extracted data to the productDTO object
-        productDTO.setName(name);
-        productDTO.setDescription(description);
-        productDTO.setPrice(Double.parseDouble(price));
-
-        // Extract category information from JSON
+    private void extractCategoryFromJson(ProductDTO productDTO, String categoryJson) {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             CategoryDTO categoryDTO = objectMapper.readValue(categoryJson, CategoryDTO.class);
@@ -50,32 +55,36 @@ public class CreateProductUCImpl implements CreateProductUC {
         } catch (JsonProcessingException e) {
             throw new InvalidRequestException("Invalid category JSON");
         }
+    }
 
-        // Handle file upload
+    private void handleFileUpload(ProductDTO productDTO, MultipartHttpServletRequest request) {
+        MultipartFile photo = request.getFile("photo");
         String url = cloudinaryRepo.uploadPicture(photo);
         productDTO.setPhoto(url);
+    }
 
-
+    private void validateProductDTO(ProductDTO productDTO) {
         if (existsByName(productDTO.getName())) {
             throw new NameAlreadyExistsException();
         }
-
         Optional<CategoryEntity> categoryOptional = categoryRepository.findById(productDTO.getCategory().getId());
         if (!categoryOptional.isPresent()) {
             throw new InvalidCategoryException("CATEGORY_ID_INVALID");
         }
-
-
-        ProductEntity savedProduct = save(ProductMapper.mapperToEntity(productDTO));
-        return ProductMapper.mapperToDTO(savedProduct);
     }
 
-    private ProductEntity save(ProductEntity product) {
-        return productRepository.save(product);
+    private CategoryEntity getCategoryEntity(ProductDTO productDTO) {
+        return categoryRepository.findById(productDTO.getCategory().getId())
+                .orElseThrow(() -> new InvalidCategoryException("CATEGORY_ID_INVALID"));
+    }
+
+    private ProductEntity saveProduct(ProductDTO productDTO, CategoryEntity categoryEntity) {
+        ProductEntity productEntity = ProductMapper.mapperToEntity(productDTO);
+        productEntity.setCategory(categoryEntity);
+        return productRepository.save(productEntity);
     }
 
     private boolean existsByName(String name) {
         return productRepository.existsByName(name);
     }
-
 }

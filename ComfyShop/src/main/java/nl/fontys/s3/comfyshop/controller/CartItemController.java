@@ -25,7 +25,7 @@ public class CartItemController {
     private final RemoveCartItemUC removeCartItemUC;
     private final UpdateCartItemUC updateCartItemUC;
     @PostMapping("/add")
-    public ResponseEntity<?> addToCart(@RequestBody CartItemDTO request) {
+    public ResponseEntity<String> addToCart(@RequestBody CartItemDTO request) {
         boolean added = addToCartUC.addToCart(request);
         if (added) {
             return ResponseEntity.ok("Item added to cart successfully.");
@@ -41,7 +41,7 @@ public class CartItemController {
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<?> removeCartItem(@PathVariable("id") Long id) {
+    public ResponseEntity<String> removeCartItem(@PathVariable("id") Long id) {
         boolean removed = removeCartItemUC.removeCartItem(id);
         if (removed) {
             return ResponseEntity.ok("Item removed from cart successfully.");
@@ -51,7 +51,7 @@ public class CartItemController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<?> updateCartItem(@RequestBody CartItemDTO request) {
+    public ResponseEntity<String> updateCartItem(@RequestBody CartItemDTO request) {
         boolean updated = updateCartItemUC.updateCartItem(request);
         if (updated) {
             return ResponseEntity.ok("Item updated in cart successfully.");
@@ -59,6 +59,4 @@ public class CartItemController {
             return ResponseEntity.badRequest().body("Failed to update item in cart.");
         }
     }
-
-
 }

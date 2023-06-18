@@ -1,2 +1,7 @@
 https://git.fhict.nl/I451473/comfyshop.git
 https://git.fhict.nl/I451473/comfyshopreact.git
+
+admin credentials:
+
+username: ali@gmail.com
+password: ali

@@ -14,11 +14,6 @@ import java.util.Optional;
 @Repository
 public interface ShoppingSessionRepository extends JpaRepository<ShoppingSessionEntity, Long> {
     Optional<ShoppingSessionEntity> findByUserAndOrderedFalse(UserEntity user);
-
-    //    List<ShoppingSessionEntity> findByUserAndOrderedTrue(UserEntity user);
-//    List<ShoppingSessionEntity> getByUserShoppingSessionsAndCartItemsAndOrderedTrue(UserEntity user);
-//    @Query("SELECT ss FROM ShoppingSessionEntity ss WHERE ss.user = :user AND ss.ordered = true")
-//    List<ShoppingSessionEntity> getByUserAndOrderedTrue(UserEntity user);
     @Query("SELECT ss.id FROM ShoppingSessionEntity ss WHERE ss.user.id = :userId AND ss.ordered = false")
     Long findShoppingSessionIdByUserIdAndNotOrdered(@Param("userId") Long userId);
     @Query("SELECT ss FROM ShoppingSessionEntity ss WHERE ss.user = :user AND ss.ordered = true ORDER BY ss.id DESC")

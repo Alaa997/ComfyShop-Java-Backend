@@ -9,18 +9,18 @@ import nl.fontys.s3.comfyshop.persistence.UserRepository;
 import nl.fontys.s3.comfyshop.persistence.entity.UserEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class GetCurrentUserUCImpl implements GetCurrentUserUC {
     private final UserRepository userRepository;
     @Override
     public UserDTO getCurrentUser(String email) {
-        UserEntity userEntity = userRepository.findByEmail(email);
-
-        if (userEntity == null) {
-            throw new UserNotFoundException("User not found for email: " + email);
-        }
+        Optional<UserEntity> optionalUser = userRepository.findByEmail(email);
+        UserEntity userEntity = optionalUser.orElseThrow(() -> new UserNotFoundException("User not found for email: " + email));
 
         return UserMapper.mapperToDTO(userEntity);
     }
+
 }

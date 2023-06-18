@@ -5,18 +5,21 @@ import nl.fontys.s3.comfyshop.bussiness.exception.InvalidShoppingCartException;
 import nl.fontys.s3.comfyshop.bussiness.shoppingCart.GetOrdersUC;
 import nl.fontys.s3.comfyshop.bussiness.shoppingCart.GetSessionIdUC;
 import nl.fontys.s3.comfyshop.bussiness.shoppingCart.UpdateShoppingSessionUC;
+import nl.fontys.s3.comfyshop.configuration.security.isauthenticated.IsAuthenticated;
 import nl.fontys.s3.comfyshop.dto.shopping.ShoppingSessionDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/shopping_session")
 @AllArgsConstructor
-//@RolesAllowed({"ROLE_CUSTOMER"})
+@IsAuthenticated
+@RolesAllowed({"ROLE_CUSTOMER"})
 public class CartShoppingController {
 
     private final UpdateShoppingSessionUC updateShoppingSessionUC;
@@ -29,10 +32,7 @@ public class CartShoppingController {
         return ResponseEntity.ok(sessionId);
     }
 
-    //@PreAuthorize("hasRole('ROLE_CUSTOMER')")
-//    @IsAuthenticated
     @PutMapping("{shoppingSessionId}/{userId}") // Place order by changing status ordered to true
-//    @RolesAllowed({"ROLE_CUSTOMER"})
     public ResponseEntity<String> updateShoppingSession(@PathVariable Long shoppingSessionId, @PathVariable Long userId) {
         try {
             boolean updated = updateShoppingSessionUC.UpdateShoppingSession(shoppingSessionId, userId);
@@ -52,5 +52,4 @@ public class CartShoppingController {
         List<ShoppingSessionDTO> orders = getOrdersUC.getOrders(userId);
         return ResponseEntity.ok(orders);
     }
-
 }

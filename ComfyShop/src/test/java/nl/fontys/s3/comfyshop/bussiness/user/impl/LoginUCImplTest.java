@@ -16,6 +16,8 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.util.Optional;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
@@ -56,7 +58,7 @@ class LoginUCImplTest {
                 .role(roleEntity)
                 .build();
 
-        when(userRepositoryMock.findByEmail(request.getEmail())).thenReturn(userEntity);
+        when(userRepositoryMock.findByEmail(request.getEmail())).thenReturn(Optional.of(userEntity));
         when(passwordEncoderMock.matches(request.getPassword(), userEntity.getPassword())).thenReturn(true);
         when(accessTokenEncoderMock.encode(any(AccessToken.class))).thenReturn("encodedAccessToken");
 
@@ -84,7 +86,7 @@ class LoginUCImplTest {
                 .password(passwordEncoderMock.encode("password123"))
                 .role(RoleEntity.builder().role(RoleEnum.CUSTOMER).build())
                 .build();
-        when(userRepositoryMock.findByEmail(request.getEmail())).thenReturn(user);
+        when(userRepositoryMock.findByEmail(request.getEmail())).thenReturn(Optional.of(user));
 
         // Call the method to be tested and assert that it throws an exception
         assertThrows(InvalidCredentialsException.class, () -> loginUC.login(request));

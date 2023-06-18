@@ -10,6 +10,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.Optional;
+
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -34,7 +36,7 @@ class GetCurrentUserUCImplTest {
                 .lastName("Doe")
                 .build();
 
-        when(userRepositoryMock.findByEmail(email)).thenReturn(userEntity);
+        when(userRepositoryMock.findByEmail(email)).thenReturn(Optional.of(userEntity));
 
         // Act
         UserDTO result = getCurrentUserUC.getCurrentUser(email);
@@ -52,7 +54,7 @@ class GetCurrentUserUCImplTest {
     void getCurrentUser_NonExistingUser_ShouldThrowUserNotFoundException() {
         // Arrange
         String email = "notexist@gmail.com";
-        when(userRepositoryMock.findByEmail(email)).thenReturn(null);
+        when(userRepositoryMock.findByEmail(email)).thenReturn(Optional.empty());
 
         // Act and Assert
         assertThrows(UserNotFoundException.class, () -> getCurrentUserUC.getCurrentUser(email));
